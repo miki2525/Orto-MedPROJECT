@@ -3,7 +3,7 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-/src/main/java/pl.ortomed/ortomedApp/testing.java
+/src/main/java/pl/ortomed/ortomedApp/testing.java
 
 ### STS ###
 .apt_generated
