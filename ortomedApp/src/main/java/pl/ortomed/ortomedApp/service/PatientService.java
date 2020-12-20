@@ -21,12 +21,22 @@ public class PatientService {
         return patientRepository.findAll();
     }
 
+
+    public Patient savePatient(Patient patient){
+        return patientRepository.save(patient);
+    }
+
+    public Boolean deletePatient(Patient patient){
+        patientRepository.delete(patient);
+        return !patientRepository.findAll().contains(patient);
+    }
+
 //free time for visits during current day
-public List<String> freeHours(LocalDate currentDay){
+    public List<String> freeHours(LocalDate currentDay){
         List<String> freeHoursList = new ArrayList<>();
         TreeMap<String, Boolean> tempMap = new TreeMap<String, Boolean>();
 
-        for(int i = 8; i <= 19; i++) {               ///gabinet czynny 8:00 - 19:30
+        for(int i = 8; i <= 19; i++) {               ///office open 8:00 - 19:30
             if (i < 10) {
                 tempMap.put("0" + i + ":00", true);  ///empty full hours
                 tempMap.put("0" + i + ":30", true);  ///empty half hours
