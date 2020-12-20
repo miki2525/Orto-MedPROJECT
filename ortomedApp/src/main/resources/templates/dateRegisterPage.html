@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>DateRegistration</title>
+</head>
+
+<body>
+<form action="#", th:action="@{/web/registration}" th:object="${patient}" method="post">
+    <p> Proszę wybrać dzień wizyty: <input type="date" th:field="*{{dateOfVisit}}"></p>
+    <input type="submit" value="Sprawdź terminy">
+</form>
+</body>
+</html>
+<!----w JS dodac mozliwosc wyboru daty max na 3 miesiace do przodu--->
+

@@ -14,7 +14,7 @@ import java.util.Objects;
 @Entity
 public class Patient {
 
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    @DateTimeFormat (pattern = "yyyy-MM-dd")
     private LocalDate dateOfVisit;
 
     private String timeOfVisit;
@@ -32,6 +32,7 @@ public class Patient {
     @Size(min = 11, max = 11)
     private String pesel;
 
+    @NotNull
     private Integer phoneNumber;
 
     private String email;

@@ -1,5 +1,6 @@
 package pl.ortomed.ortomedApp.service;
 
+import org.springframework.stereotype.Service;
 import pl.ortomed.ortomedApp.model.Patient;
 import pl.ortomed.ortomedApp.repository.PatientRepository;
 
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+@Service
 public class PatientService {
 
     private PatientRepository patientRepository;
