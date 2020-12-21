@@ -14,14 +14,14 @@ import java.util.Objects;
 @Entity
 public class Patient {
 
+    @Id
+    @GeneratedValue
+    private Long id;
+
     @DateTimeFormat (pattern = "yyyy-MM-dd")
     private LocalDate dateOfVisit;
 
     private String timeOfVisit;
-
-    @Id
-    @GeneratedValue
-    private Long id;
 
     @NotNull
     private String firstName;
@@ -118,7 +118,9 @@ public class Patient {
     @Override
     public String toString() {
         return "Patient{" +
-                "id=" + id +
+                "dateOfVisit=" + dateOfVisit +
+                ", timeOfVisit='" + timeOfVisit + '\'' +
+                ", id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", pesel='" + pesel + '\'' +
@@ -126,6 +128,7 @@ public class Patient {
                 ", email='" + email + '\'' +
                 '}';
     }
+
 
     @Override
     public boolean equals(Object o) {

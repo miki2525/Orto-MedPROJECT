@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>ORTOMED</title>
+</head>
+<body>
+<p th:text="'first: ' + ${patient.firstName}" />
+<p th:text="'last: ' + ${patient.lastName}" />
+<p th:text="'pesel: ' + ${patient.pesel}" />
+<p th:text="'tel: ' + ${patient.phoneNumber}" />
+<p th:text="'email: ' + ${patient.email}" />
+<p th:text="'Data konsultacji: ' + ${patient.dateOfVisit}" />
+<p th:text="'Godzina konsultacji: ' + ${patient.timeOfVisit}" />
+</body>
+</html>

@@ -7,8 +7,17 @@
 <body>
 udalo sie
 
-<!--<form>th:action="@{/web/registration/success" th:object="${patient}" method="post"-->
-<p th:text="'Wybrano datę: ' + ${patient.dateOfVisit}"></p>
-
+<form th:action="@{/web/registration/success}" th:object="${patient}" method="post">
+    <input type="date" th:value="${patient.dateOfVisit}" th:field="*{dateOfVisit}" readonly>
+    <select th:field="*{timeOfVisit}">
+        <option th:each="hour : ${hours}" th:value="${hour}" th:text="${hour}"></option>
+    </select>
+    <p>Imię: <input type="text" th:field="*{firstName}"></p>
+    <p>Nazwisko: <input type="text" th:field="*{lastName}"></p>
+    <p>PESEL*: <input type="text" th:field="*{pesel}"></p>
+    <p>Numer telefonu: <input type="number" th:field="*{phoneNumber}"</p>
+    <p>Adres e-mail: <input type="text" th:field="*{email}"></p>
+    <input type="submit" value="Rejestruj"><input type="reset" value="Od nowa">
+</form>
 </body>
 </html>

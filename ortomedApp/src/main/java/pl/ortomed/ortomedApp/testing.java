@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class testing   {
-  /*  private String time;
+    private String time;
 
     public String getTime() {
         return time;
@@ -29,9 +29,9 @@ public class testing   {
         testing test4 = new testing();
         testing test5 = new testing();
         testing test6 = new testing();
-        test1.setTime("8:00");
-        test2.setTime("9:30");
-        test3.setTime("9:00");
+        test1.setTime("08:00");
+        test2.setTime("09:30");
+        test3.setTime("09:00");
         test4.setTime("10:30");
         test5.setTime("12:00");
         test6.setTime("11:00");
@@ -74,7 +74,7 @@ public class testing   {
         System.out.println(tempList);
 
     }
-*/
+
 
 }
 
