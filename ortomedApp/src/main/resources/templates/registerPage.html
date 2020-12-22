@@ -1,23 +1,57 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
+    <script>
+        //onload="noBack();"
+        // onpageshow="if (event.persisted) noBack();" onunload=""
+        // window.onload = function () {
+        //     var name = document.getElementById("name")
+        //     name.setAttribute("value", "adam")
+        // }
+        window.onload = function () {
+
+            var checkbox = document.getElementById("foreigner");
+            checkbox.onclick = function () {
+                var pesel = document.getElementById("pesel");
+                if(checkbox.checked){
+                    pesel.disabled = true;
+                }
+                else{
+                    pesel.removeAttribute("disabled");
+                }
+            }
+            document.getElementById("submit").onclick = function () {
+                if(checkbox.checked){
+                    document.getElementById("pesel").value = null;
+                    console.log("bedzie nullem")
+                }
+            }
+        }
+    </script>
+<!--    <SCRIPT type="text/javascript">-->
+<!--        window.history.forward();-->
+<!--        function noBack() { window.history.forward(); }-->
+<!--      </SCRIPT> -->
     <meta charset="UTF-8">
     <title>Registration</title>
 </head>
-<body>
-udalo sie
 
-<form th:action="@{/web/registration/success}" th:object="${patient}" method="post">
+<body>
+
+
+<form th:action="@{/registration/success}" th:object="${patient}" method="post">
     <input type="date" th:value="${patient.dateOfVisit}" th:field="*{dateOfVisit}" readonly>
     <select th:field="*{timeOfVisit}">
         <option th:each="hour : ${hours}" th:value="${hour}" th:text="${hour}"></option>
     </select>
-    <p>Imię: <input type="text" th:field="*{firstName}"></p>
+    <p>Imię: <input type="text" id="name" th:field="*{firstName}">
     <p>Nazwisko: <input type="text" th:field="*{lastName}"></p>
-    <p>PESEL*: <input type="text" th:field="*{pesel}"></p>
-    <p>Numer telefonu: <input type="number" th:field="*{phoneNumber}"</p>
+    <p>PESEL*: <input type="text" id="pesel" th:field="*{pesel}"></p>
+    <p><label for="foreigner"> <font size="2">*Zaznacz tylko, jeśli jesteś obcokrajowcem. Check the box, only if you are the foreigner.</font></label>
+    <input type="checkbox" id="foreigner" style="cursor: pointer"></p>
+    <p>Numer telefonu: <input type="text" th:field="*{phoneNumber}"></p>
     <p>Adres e-mail: <input type="text" th:field="*{email}"></p>
-    <input type="submit" value="Rejestruj"><input type="reset" value="Od nowa">
+    <input type="submit" id="submit" value="Zarejestruj"> <input type="reset" id="reset" value="Resetuj dane">
 </form>
 </body>
 </html>

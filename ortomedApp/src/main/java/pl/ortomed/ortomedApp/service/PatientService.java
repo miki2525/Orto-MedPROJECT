@@ -5,10 +5,7 @@ import pl.ortomed.ortomedApp.model.Patient;
 import pl.ortomed.ortomedApp.repository.PatientRepository;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 @Service
 public class PatientService {
@@ -23,7 +20,15 @@ public class PatientService {
         return patientRepository.findAll();
     }
 
-
+    public List<Patient> findByPesel(Integer pesel){ //can be more than one visit per patient
+            List list = new ArrayList();
+        for (Patient tempPatient : patientRepository.findAll()){
+            if(tempPatient.getPesel() == pesel){
+              list.add(tempPatient);
+            }
+        }
+        return list;
+    }
     public Patient savePatient(Patient patient){
         return patientRepository.save(patient);
     }
@@ -33,7 +38,7 @@ public class PatientService {
         return !patientRepository.findAll().contains(patient);
     }
 
-//free hours for visits during current day
+    //free hours for visits depended on chosen day
     public List<String> freeHours(LocalDate currentDay){
         List<String> freeHoursList = new ArrayList<>();
         TreeMap<String, Boolean> tempMap = new TreeMap<String, Boolean>();

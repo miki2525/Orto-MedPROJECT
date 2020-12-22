@@ -6,7 +6,7 @@
 </head>
 
 <body>
-<form action="#", th:action="@{/web/registration}" th:object="${patient}" method="post">
+<form action="#", th:action="@{/registration}" th:object="${patient}" method="post">
     <p> Proszę wybrać dzień wizyty: <input type="date" th:field="*{{dateOfVisit}}"></p>
     <input type="submit" value="Sprawdź terminy">
 </form>

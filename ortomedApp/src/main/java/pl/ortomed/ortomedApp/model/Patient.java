@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.Objects;
@@ -18,19 +19,23 @@ public class Patient {
     @GeneratedValue
     private Long id;
 
-    @DateTimeFormat (pattern = "yyyy-MM-dd")
+    @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateOfVisit;
 
+    @NotBlank
     private String timeOfVisit;
 
-    @NotNull
+    @NotBlank
+    @Size(min = 2)
     private String firstName;
 
-    @NotNull
+    @NotBlank
+    @Size(min = 2)
     private String lastName;
 
-    @Size(min = 11, max = 11)
-    private String pesel;
+    @NotBlank
+    private Integer pesel;
 
     @NotNull
     private Integer phoneNumber;
@@ -40,7 +45,7 @@ public class Patient {
     public Patient() {
     }
 
-    public Patient(LocalDate dateOfVisit, String timeOfVisit, String firstName, String lastName, String pesel, Integer phoneNumber, String email) {
+    public Patient(LocalDate dateOfVisit, String timeOfVisit, String firstName, String lastName, Integer pesel, Integer phoneNumber, String email) {
 
         this.dateOfVisit = dateOfVisit;
         this.timeOfVisit = timeOfVisit;
@@ -63,7 +68,8 @@ public class Patient {
         return timeOfVisit;
     }
 
-    public void setTimeOfVisit(String timeOfVisit) { ;
+    public void setTimeOfVisit(String timeOfVisit) {
+        ;
         this.timeOfVisit = timeOfVisit;
     }
 
@@ -91,11 +97,11 @@ public class Patient {
         this.lastName = lastName;
     }
 
-    public String getPesel() {
+    public Integer getPesel() {
         return pesel;
     }
 
-    public void setPesel(String pesel) {
+    public void setPesel(Integer pesel) {
         this.pesel = pesel;
     }
 
@@ -118,24 +124,24 @@ public class Patient {
     @Override
     public String toString() {
         return "Patient{" +
-                "dateOfVisit=" + dateOfVisit +
+                "id=" + id +
+                ", dateOfVisit=" + dateOfVisit +
                 ", timeOfVisit='" + timeOfVisit + '\'' +
-                ", id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", pesel='" + pesel + '\'' +
+                ", pesel=" + pesel +
                 ", phoneNumber=" + phoneNumber +
                 ", email='" + email + '\'' +
                 '}';
     }
-
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Patient patient = (Patient) o;
-        return
+        return  Objects.equals(dateOfVisit, patient.dateOfVisit) &&
+                Objects.equals(timeOfVisit, patient.timeOfVisit) &&
                 Objects.equals(firstName, patient.firstName) &&
                 Objects.equals(lastName, patient.lastName) &&
                 Objects.equals(pesel, patient.pesel) &&
@@ -145,6 +151,6 @@ public class Patient {
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, pesel, phoneNumber*11, email);
+        return Objects.hash(dateOfVisit, timeOfVisit, firstName, lastName, pesel, phoneNumber, email);
     }
 }
