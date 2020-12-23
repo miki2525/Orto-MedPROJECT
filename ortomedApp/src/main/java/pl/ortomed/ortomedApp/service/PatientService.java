@@ -39,18 +39,27 @@ public class PatientService {
     }
 
     //free hours for visits depended on chosen day
-    public List<String> freeHours(LocalDate currentDay){
+    public List<String> showFreeHours(LocalDate currentDay, String doctor){
         List<String> freeHoursList = new ArrayList<>();
         TreeMap<String, Boolean> tempMap = new TreeMap<String, Boolean>();
+        String morningDoc = "dr. Pan X";
+        String afternoonDoc = "dr. Pani Y";
 
         for(int i = 8; i <= 19; i++) {               ///office open 8:00 - 19:30
-            if (i < 10) {
-                tempMap.put("0" + i + ":00", true);  ///free full hours
-                tempMap.put("0" + i + ":30", true);  ///free half hours
-            } else {
+            if (doctor.toLowerCase() == morningDoc.toLowerCase() && i < 14){
+                if (i < 10) {
+                    tempMap.put("0" + i + ":00", true);  ///free full hours
+                    tempMap.put("0" + i + ":30", true);  ///free half hours
+                } else {
+                    tempMap.put(i + ":00", true);        ///free full hours
+                    tempMap.put(i + ":30", true);        ///free half hours
+                }
+            }
+            else if(doctor.toLowerCase() == afternoonDoc.toLowerCase() && i >= 14){
                 tempMap.put(i + ":00", true);        ///free full hours
                 tempMap.put(i + ":30", true);        ///free half hours
             }
+
         }
 
         for (Patient tempPatient: patientRepository.findAll())

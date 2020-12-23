@@ -24,6 +24,9 @@ public class Patient {
     private LocalDate dateOfVisit;
 
     @NotBlank
+    private String doctor;
+
+    @NotBlank
     private String timeOfVisit;
 
     @NotBlank
@@ -45,9 +48,10 @@ public class Patient {
     public Patient() {
     }
 
-    public Patient(LocalDate dateOfVisit, String timeOfVisit, String firstName, String lastName, Integer pesel, Integer phoneNumber, String email) {
+    public Patient(LocalDate dateOfVisit, String doctor, String timeOfVisit, String firstName, String lastName, Integer pesel, Integer phoneNumber, String email) {
 
         this.dateOfVisit = dateOfVisit;
+        this.doctor = doctor;
         this.timeOfVisit = timeOfVisit;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -62,6 +66,14 @@ public class Patient {
 
     public void setDateOfVisit(LocalDate dateOfVisit) {
         this.dateOfVisit = dateOfVisit;
+    }
+
+    public String getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(String doctor) {
+        this.doctor = doctor;
     }
 
     public String getTimeOfVisit() {

@@ -1,15 +1,11 @@
 package pl.ortomed.ortomedApp.controller;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.ortomed.ortomedApp.model.Patient;
 import pl.ortomed.ortomedApp.service.PatientService;
 
-import javax.validation.Valid;
-import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -35,11 +31,12 @@ public PatientController(PatientService patientService){this.patientService = pa
 
 @PostMapping("/registration")
   public String showRegisterPage(@ModelAttribute Patient patient, Model model){
-        if(patient.getDateOfVisit()==null){
+        //////walidacja po w js
+        if(patient.getDateOfVisit()==null || patient.getDoctor() == ""){
             return "dateRegisterPage";
         }
         model.addAttribute("patient", patient);
-        List<String> hoursList = patientService.freeHours(patient.getDateOfVisit());
+        List<String> hoursList = patientService.showFreeHours(patient.getDateOfVisit(), patient.getDoctor());
         model.addAttribute("hours", hoursList);
     return "registerPage";
 }

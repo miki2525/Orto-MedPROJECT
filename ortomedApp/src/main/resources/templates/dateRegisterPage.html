@@ -7,10 +7,16 @@
 
 <body>
 <form action="#", th:action="@{/registration}" th:object="${patient}" method="post">
-    <p> Proszę wybrać dzień wizyty: <input type="date" th:field="*{{dateOfVisit}}"></p>
+    <p> Proszę wybrać dzień wizyty: <input type="date" th:field="*{dateOfVisit}"></p>
+    <p> Proszę wybrać lekarza: <select th:field="*{doctor}">
+        <option disabled selected>----Wybierz lekarza----</option>
+        <option th:value="dr. Pan X">dr. Pan X</option>
+        <option th:value="dr. Pani Y">dr. Pani Y</option>
+    </select></p>
     <input type="submit" value="Sprawdź terminy">
 </form>
 </body>
 </html>
+
 <!----w JS dodac mozliwosc wyboru daty max na 3 miesiace do przodu--->
 
