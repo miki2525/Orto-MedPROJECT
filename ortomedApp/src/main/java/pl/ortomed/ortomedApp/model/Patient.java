@@ -43,9 +43,10 @@ public class Patient {
     @NotNull
     private Integer phoneNumber;
 
+    @NotBlank
     private String email;
 
-    private Integer password:
+    private Integer password;
 
     public Patient() {
     }
@@ -148,33 +149,38 @@ public class Patient {
     @Override
     public String toString() {
         return "Patient{" +
-                "id=" + id +
-                ", dateOfVisit=" + dateOfVisit +
+                "dateOfVisit=" + dateOfVisit +
+                ", doctor='" + doctor + '\'' +
                 ", timeOfVisit='" + timeOfVisit + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", pesel=" + pesel +
                 ", phoneNumber=" + phoneNumber +
                 ", email='" + email + '\'' +
+                ", password=" + password +
                 '}';
     }
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Patient patient = (Patient) o;
-        return  Objects.equals(dateOfVisit, patient.dateOfVisit) &&
+        return Objects.equals(id, patient.id) &&
+                Objects.equals(dateOfVisit, patient.dateOfVisit) &&
+                Objects.equals(doctor, patient.doctor) &&
                 Objects.equals(timeOfVisit, patient.timeOfVisit) &&
                 Objects.equals(firstName, patient.firstName) &&
                 Objects.equals(lastName, patient.lastName) &&
                 Objects.equals(pesel, patient.pesel) &&
                 Objects.equals(phoneNumber, patient.phoneNumber) &&
-                Objects.equals(email, patient.email);
+                Objects.equals(email, patient.email) &&
+                Objects.equals(password, patient.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(dateOfVisit, timeOfVisit, firstName, lastName, pesel, phoneNumber, email);
+        return Objects.hash(id, dateOfVisit, doctor, timeOfVisit, firstName, lastName, pesel*13, phoneNumber*11, email, password*7);
     }
 }
