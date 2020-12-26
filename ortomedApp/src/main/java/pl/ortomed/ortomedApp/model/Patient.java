@@ -45,10 +45,13 @@ public class Patient {
 
     private String email;
 
+    private Integer password:
+
     public Patient() {
     }
 
-    public Patient(LocalDate dateOfVisit, String doctor, String timeOfVisit, String firstName, String lastName, Integer pesel, Integer phoneNumber, String email) {
+    public Patient(LocalDate dateOfVisit, String doctor, String timeOfVisit, String firstName,
+                   String lastName, Integer pesel, Integer phoneNumber, String email, Integer password) {
 
         this.dateOfVisit = dateOfVisit;
         this.doctor = doctor;
@@ -58,6 +61,7 @@ public class Patient {
         this.pesel = pesel;
         this.phoneNumber = phoneNumber;
         this.email = email;
+        this.password = password;
     }
 
     public LocalDate getDateOfVisit() {
@@ -131,6 +135,14 @@ public class Patient {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Integer getPassword() {
+        return password;
+    }
+
+    public void setPassword(Integer password) {
+        this.password = password;
     }
 
     @Override
