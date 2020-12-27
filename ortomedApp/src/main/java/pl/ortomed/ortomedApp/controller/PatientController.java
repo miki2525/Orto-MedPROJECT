@@ -41,6 +41,9 @@ this.mailService = mailService;}
         }
         model.addAttribute("patient", patient);
         List<String> hoursList = patientService.showFreeHours(patient.getDateOfVisit(), patient.getDoctor());
+    if(hoursList.isEmpty()){
+        return "noFreeHoursPage";
+    }
         model.addAttribute("hours", hoursList);
     return "registerPage";
 }
@@ -48,8 +51,8 @@ this.mailService = mailService;}
 @PostMapping("/registration/success")
     public String showSuccessPage(@ModelAttribute Patient patient) throws MessagingException {
 
-    for (Patient temp : patientService.showAll()){
-        if (patient.equals(temp)){
+    for (Patient tempPatient : patientService.showAll()){
+        if (patient.equals(tempPatient)){
             return "errorPage";
         }
     }
@@ -58,12 +61,18 @@ this.mailService = mailService;}
     }*/
     ////zrobic walidacje po str frontu jak i backu
 //    if ok -> SuccessPage, else -> "Nie mozna zarejestrowac, sprobuj ponownie"
+    ///sprawdzic czy podany mail dotyczy jednej osoby, jesli nie to
         mailService.sendMail(patient, true);
         mailService.sendMailPass(patient, true);
         patientService.savePatient(patient);
         System.out.println(patient);
         return "successPage";
 
+    }
+
+    @GetMapping("/visit")
+    public String askForDataVisit(){
+    return "visitPage";
     }
 
 

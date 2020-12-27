@@ -23,7 +23,6 @@
             document.getElementById("submit").onclick = function () {
                 if(checkbox.checked){
                     document.getElementById("pesel").value = null;
-                    console.log("bedzie nullem")
                 }
             }
         }
@@ -40,10 +39,11 @@
 
 
 <form th:action="@{/registration/success}" th:object="${patient}" method="post">
-    <input type="date" th:value="${patient.dateOfVisit}" th:field="*{dateOfVisit}" readonly>
+    <p>Data: <input type="date" th:value="${patient.dateOfVisit}" th:field="*{dateOfVisit}" readonly="true">
     <select th:field="*{timeOfVisit}">
         <option th:each="hour : ${hours}" th:value="${hour}" th:text="${hour}"></option>
-    </select>
+    </select></p>
+    <p>Lekarz: <input type="text" th:value="${patient.doctor}" th:field="*{doctor}" readonly></p>
     <p>Imię: <input type="text" id="name" th:field="*{firstName}">
     <p>Nazwisko: <input type="text" th:field="*{lastName}"></p>
     <p>PESEL*: <input type="text" id="pesel" th:field="*{pesel}"></p>

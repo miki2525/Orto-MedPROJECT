@@ -42,11 +42,11 @@ public class PatientService {
     public List<String> showFreeHours(LocalDate currentDay, String doctor){
         List<String> freeHoursList = new ArrayList<>();
         TreeMap<String, Boolean> tempMap = new TreeMap<String, Boolean>();
-        String morningDoc = "dr. Pan X";
-        String afternoonDoc = "dr. Pani Y";
+        String morningDoc = "dr. Kuciapka";
+        String afternoonDoc = "dr. Tarman";
 
         for(int i = 8; i <= 19; i++) {               ///office open 8:00 - 19:30
-            if (doctor.toLowerCase().contains(morningDoc.toLowerCase()) && i < 14){
+            if (doctor.toLowerCase().equals(morningDoc.toLowerCase()) && i < 14){
                 if (i < 10) {
                     tempMap.put("0" + i + ":00", true);  ///free full hours
                     tempMap.put("0" + i + ":30", true);  ///free half hours
@@ -55,7 +55,7 @@ public class PatientService {
                     tempMap.put(i + ":30", true);        ///free half hours
                 }
             }
-            else if(doctor.toLowerCase().contains(afternoonDoc.toLowerCase()) && i >= 14){
+            else if(doctor.toLowerCase().equals(afternoonDoc.toLowerCase()) && i >= 14){
                 tempMap.put(i + ":00", true);        ///free full hours
                 tempMap.put(i + ":30", true);        ///free half hours
             }

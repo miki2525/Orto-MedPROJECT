@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="jquery.js"></script>
+    <script>
+        function showVisit() {
+            var email = $("#email").val();
+            var pass = $("#pass").val();
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var obj = JSON.parse(this.responseText);
+                    if (obj.id != null) {
+                        $("#fname").html(obj.firstName);
+                        $("#lname").html(obj.lastName);
+                        $("#date").html(obj.dateOfVisit);
+                        $("#hour").html(obj.timeOfVisit);
+                        $("#doc").html(obj.doctor);
+                        $("#tableplace").slideDown("slow");
+                    }else{
+                        $("#tableplace").slideDown("slow").html("Brak wyników. Sprawdź poprawność danych.")
+                    }
+                }
+            }
+
+            xhttp.open("POST", "/api/showVisit", true)
+            xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhttp.send("email=" + email + "&pass=" + pass);
+        }
+
+    </script>
+    <meta charset="UTF-8">
+    <title>ORTOMED</title>
+</head>
+<body>
+<p>Prosimy o podanie poniższych danych , aby móc sprawdzić termin Twojej wizyty.</p>
+
+<form>
+    <p>Adres e-mail: <input type="text" name="email" id="email" value="walka@o2.pl"></p>
+    <p>Hasło: <input type="text" name="pass" id="pass" value="1"></p>
+    <input type="button" onclick="showVisit()" id="submit" value="Wyszukaj">
+</form>
+
+<div id="tableplace" style="display: none; background-color: aqua">
+<table id="table" width="100%" style="background-color: coral">
+    <tr>
+<th>Imię</th><th>Nazwisko</th><th>Data</th><th>Godzina</th><th>Lekarz</th>
+    </tr>
+    <tr style="text-align: center">
+<td id="fname"></td><td id="lname"></td><td id="date"></td><td id="hour"></td><td id="doc"></td>
+    </tr>
+</table>
+</div>
+</body>
+</html>
