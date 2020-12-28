@@ -3,13 +3,15 @@
 <head>
     <script src="jquery.js"></script>
     <script>
+
+        var obj;
         function showVisit() {
+            var xhttp = new XMLHttpRequest();
             var email = $("#email").val();
             var pass = $("#pass").val();
-            var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
-                    var obj = JSON.parse(this.responseText);
+                    obj = JSON.parse(this.responseText);
                     if (obj.id != null) {
                         $("#fname").html(obj.firstName);
                         $("#lname").html(obj.lastName);
@@ -17,15 +19,35 @@
                         $("#hour").html(obj.timeOfVisit);
                         $("#doc").html(obj.doctor);
                         $("#tableplace").slideDown("slow");
-                    }else{
-                        $("#tableplace").slideDown("slow").html("Brak wyników. Sprawdź poprawność danych.")
+                        document.getElementById("delete").addEventListener("click", deleteVisit);
+                    } else {
+                      $("#tableplace").slideDown("slow").html("Brak wyników. Sprawdź poprawność danych.")
                     }
                 }
             }
-
             xhttp.open("POST", "/api/showVisit", true)
             xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             xhttp.send("email=" + email + "&pass=" + pass);
+        }
+
+        function deleteVisit() {
+            if (window.confirm("Czy napewno chcesz anulować swoją wizytę?")) {
+                xhttp = new XMLHttpRequest();
+                xhttp.open("POST", "api/delete", false);
+                xhttp.setRequestHeader("Content-Type", "application/json");
+                xhttp.send(JSON.stringify(obj));
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        if (xhttp.responseText) {
+                            $("#table").remove();
+                            $("#tableplace").slideDown("slow").html("Usunue.");
+                        }
+                        else{
+                            window.alert("Nie udało się anulować terminu. Prosimy o kontakt telefoniczny.")
+                        }
+                    }
+                }
+            }
         }
 
     </script>
@@ -41,13 +63,13 @@
     <input type="button" onclick="showVisit()" id="submit" value="Wyszukaj">
 </form>
 
-<div id="tableplace" style="display: none; background-color: aqua">
-<table id="table" width="100%" style="background-color: coral">
+<div id="tableplace" style="display: none">
+<table id="table" width="100%">
     <tr>
-<th>Imię</th><th>Nazwisko</th><th>Data</th><th>Godzina</th><th>Lekarz</th>
+<th>Imię</th><th>Nazwisko</th><th>Data</th><th>Godzina</th><th>Lekarz</th><th></th>
     </tr>
     <tr style="text-align: center">
-<td id="fname"></td><td id="lname"></td><td id="date"></td><td id="hour"></td><td id="doc"></td>
+<td id="fname"></td><td id="lname"></td><td id="date"></td><td id="hour"></td><td id="doc"></td><td><a href="#" id="delete" style="text-align: center">Anuluj</a> <a href="#" onclick="changeVisit()" id="change" style="text-align: center">Zmień</a></td>
     </tr>
 </table>
 </div>
