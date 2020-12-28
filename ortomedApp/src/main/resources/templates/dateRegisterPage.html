@@ -6,14 +6,27 @@
 </head>
 
 <body>
-<form action="#", th:action="@{/registration}" th:object="${patient}" method="post">
+<form action="#" th:action="@{/registration}" th:object="${patient}" method="post">
     <p> Proszę wybrać dzień wizyty: <input type="date" th:field="*{dateOfVisit}"></p>
     <p> Proszę wybrać lekarza: <select th:field="*{doctor}">
         <option th:value="''" selected="true" disabled="disabled">----Wybierz lekarza----</option>
         <option th:value="'dr. Kuciapka'">dr. Kuciapka</option>
-        <option th:value="'dr. Tarman'" selected>dr. Tarman</option>
+        <option th:value="'dr. Tarman'">dr. Tarman</option>
     </select></p>
     <input type="submit" value="Sprawdź terminy">
+
+
+    <!--Patient wanted to change the visit-->
+    <div class="update" style="display: none">
+    <input type="text" th:value="${patient.id}" th:field="*{id}">
+    <input type="text" th:value="${patient.firstName}" th:field="*{firstName}">
+    <input type="text" th:value="${patient.lastName}" th:field="*{lastName}">
+    <input type="text"  th:value="${patient.pesel}" th:field="*{pesel}">
+    <input type="text" th:value="${patient.phoneNumber}" th:field="*{phoneNumber}">
+    <input type="text" th:value="${patient.email}" th:field="*{email}">
+    </div>
+    <!-------------------------------------->
+
 </form>
 </body>
 </html>

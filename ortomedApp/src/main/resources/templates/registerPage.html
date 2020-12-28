@@ -44,14 +44,21 @@
         <option th:each="hour : ${hours}" th:value="${hour}" th:text="${hour}"></option>
     </select></p>
     <p>Lekarz: <input type="text" th:value="${patient.doctor}" th:field="*{doctor}" readonly></p>
-    <p>Imię: <input type="text" id="name" th:field="*{firstName}">
-    <p>Nazwisko: <input type="text" th:field="*{lastName}"></p>
-    <p>PESEL*: <input type="text" id="pesel" th:field="*{pesel}"></p>
+    <p>Imię: <input type="text" id="name" th:value="${patient.firstName}" th:field="*{firstName}">
+    <p>Nazwisko: <input type="text" th:value="${patient.lastName}" th:field="*{lastName}"></p>
+    <p>PESEL*: <input type="text" id="pesel" th:value="${patient.pesel}" th:field="*{pesel}"></p>
     <p><label for="foreigner"> <font size="2">*Zaznacz tylko, jeśli jesteś obcokrajowcem. Check the box, only if you are the foreigner.</font></label>
     <input type="checkbox" id="foreigner" style="cursor: pointer"></p>
-    <p>Numer telefonu: <input type="text" th:field="*{phoneNumber}"></p>
-    <p>Adres e-mail: <input type="text" th:field="*{email}"></p>
+    <p>Numer telefonu: <input type="text" th:value="${patient.phoneNumber}" th:field="*{phoneNumber}"></p>
+    <p>Adres e-mail: <input type="text" th:value="${patient.email}" th:field="*{email}"></p>
     <input type="submit" id="submit" value="Zarejestruj"> <input type="reset" id="reset" value="Resetuj dane">
+
+    <!--Patient wanted to change the visit-->
+    <div class="update" style="display: none">
+    <input type="text" th:value="${patient.id}" th:field="*{id}">
+    </div>
+    <!-------------------------------------->
+
 </form>
 </body>
 </html>

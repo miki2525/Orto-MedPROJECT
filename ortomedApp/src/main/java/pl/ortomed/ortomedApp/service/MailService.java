@@ -27,8 +27,7 @@ public class MailService {
                 "===========================================================================<br>Ta wiadomość została wygenerowana automatycznie. Proszę na nią nie odpowiadać";
         String subject = "OrtoMED - Potwierdzenie Rejestracji";
         String to = patient.getEmail();
-        Random random = new Random();
-        int generateNumber = random.nextInt((1000000 - 100000 + 1) + 100000);
+
 
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
@@ -37,7 +36,6 @@ public class MailService {
         mimeMessageHelper.setText(text, isHtmlContent);
         mimeMessageHelper.setReplyTo("noreply@ORTOMET.pl");
         javaMailSender.send(mimeMessage);
-        patient.setPassword(generateNumber);
     }
 
     public void sendMailPass(Patient patient, boolean isHtmlContent) throws MessagingException {

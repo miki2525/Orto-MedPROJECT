@@ -20,6 +20,8 @@ public class PatientService {
         return patientRepository.findAll();
     }
 
+    public Optional<Patient> findById(Long id){return patientRepository.findById(id);}
+
     public List<Patient> findByPesel(Integer pesel){ //can be more than one visit per patient
             List list = new ArrayList();
         for (Patient tempPatient : patientRepository.findAll()){

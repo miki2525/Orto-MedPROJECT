@@ -20,6 +20,7 @@
                         $("#doc").html(obj.doctor);
                         $("#tableplace").slideDown("slow");
                         document.getElementById("delete").addEventListener("click", deleteVisit);
+                        document.getElementById("change").addEventListener("click", changeVisit);
                     } else {
                       $("#tableplace").slideDown("slow").html("Brak wyników. Sprawdź poprawność danych.")
                     }
@@ -33,21 +34,34 @@
         function deleteVisit() {
             if (window.confirm("Czy napewno chcesz anulować swoją wizytę?")) {
                 xhttp = new XMLHttpRequest();
-                xhttp.open("POST", "api/delete", false);
+                xhttp.open("POST", "api/delete", true);
                 xhttp.setRequestHeader("Content-Type", "application/json");
                 xhttp.send(JSON.stringify(obj));
                 xhttp.onreadystatechange = function () {
                     if (this.readyState == 4 && this.status == 200) {
                         if (xhttp.responseText) {
                             $("#table").remove();
-                            $("#tableplace").slideDown("slow").html("Usunue.");
-                        }
-                        else{
-                            window.alert("Nie udało się anulować terminu. Prosimy o kontakt telefoniczny.")
+                            $("#tableplace").slideDown("slow").html("Twoja wizyta została anulowana");
                         }
                     }
                 }
             }
+        }
+        function changeVisit(){
+                xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    $("#form").html(xhttp.responseText);
+                    $("#loading").hide();
+                }
+                else{
+                    $("#loading").show();
+                    $("#loading").animate({height: '300px', opacity: '0.4'}, "fast");
+                }
+
+            }
+                xhttp.open("get", "/registration?id=" + obj.id, true);
+                xhttp.send();
         }
 
     </script>
@@ -69,9 +83,11 @@
 <th>Imię</th><th>Nazwisko</th><th>Data</th><th>Godzina</th><th>Lekarz</th><th></th>
     </tr>
     <tr style="text-align: center">
-<td id="fname"></td><td id="lname"></td><td id="date"></td><td id="hour"></td><td id="doc"></td><td><a href="#" id="delete" style="text-align: center">Anuluj</a> <a href="#" onclick="changeVisit()" id="change" style="text-align: center">Zmień</a></td>
+        <td id="fname"></td><td id="lname"></td><td id="date"></td><td id="hour"></td><td id="doc"></td><td><a href="#" onclick="changeVisit()" id="change" style="text-align: center">Zmień</a></td><td><a href="#" id="delete" style="text-align: center">Anuluj</a></td>
     </tr>
 </table>
+    <p id="form"></p>
 </div>
+<div id="loading" style="background-color: black; display: none"><p style="color: white">LOADING</p></div>
 </body>
 </html>

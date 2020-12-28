@@ -9,6 +9,8 @@ import pl.ortomed.ortomedApp.service.PatientService;
 
 import javax.mail.MessagingException;
 import java.util.List;
+import java.util.Optional;
+import java.util.Random;
 
 @Controller
 @RequestMapping("/")
@@ -27,14 +29,25 @@ this.mailService = mailService;}
 
 
 @GetMapping("/registration")
-    public String showDateRegisterPage(Model model){
-        Patient patient = new Patient();
+    public String showDateRegisterPage(@RequestParam (value = "id", required = false, defaultValue = "0") Long id ,  Model model){
+    Patient patient = null;
+    if (id > 0L) {          /////////////////UPDATE OLD PATIENT
+        for(Patient temppatient : patientService.showAll()) {
+            if (temppatient.getId() == id) {
+                patient = temppatient;
+                model.addAttribute("patient", patient);
+            }
+        }
+    } else {               /////////////////CREATE NEW PATIENT
+        patient = new Patient();
         model.addAttribute("patient", patient);
+    }
     return "dateRegisterPage";
 }
 
 @PostMapping("/registration")
   public String showRegisterPage(@ModelAttribute Patient patient, Model model){
+
         //////walidacja po w js
         if(patient.getDateOfVisit()==null || patient.getDoctor() == ""){
             return "dateRegisterPage";
@@ -62,8 +75,11 @@ this.mailService = mailService;}
     ////zrobic walidacje po str frontu jak i backu
 //    if ok -> SuccessPage, else -> "Nie mozna zarejestrowac, sprobuj ponownie"
     ///sprawdzic czy podany mail dotyczy jednej osoby, jesli nie to
-        mailService.sendMail(patient, true);
-        mailService.sendMailPass(patient, true);
+//        mailService.sendMail(patient, true);
+//        mailService.sendMailPass(patient, true);
+        Random random = new Random();
+        int generateNumber = random.nextInt((1000000 - 100000 + 1) + 100000);
+        patient.setPassword(generateNumber);
         patientService.savePatient(patient);
         System.out.println(patient);
         return "successPage";
@@ -71,7 +87,7 @@ this.mailService = mailService;}
     }
 
     @GetMapping("/visit")
-    public String askForDataVisit(){
+    public String showVisitPage(){
     return "visitPage";
     }
 
