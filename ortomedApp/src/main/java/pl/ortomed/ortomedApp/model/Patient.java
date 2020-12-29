@@ -38,7 +38,7 @@ public class Patient {
     private String lastName;
 
     @NotBlank
-    private Integer pesel;
+    private Long pesel;
 
     @NotNull
     private Integer phoneNumber;
@@ -52,7 +52,7 @@ public class Patient {
     }
 
     public Patient(LocalDate dateOfVisit, String doctor, String timeOfVisit, String firstName,
-                   String lastName, Integer pesel, Integer phoneNumber, String email, Integer password) {
+                   String lastName, Long pesel, Integer phoneNumber, String email, Integer password) {
 
         this.dateOfVisit = dateOfVisit;
         this.doctor = doctor;
@@ -114,11 +114,11 @@ public class Patient {
         this.lastName = lastName;
     }
 
-    public Integer getPesel() {
+    public Long getPesel() {
         return pesel;
     }
 
-    public void setPesel(Integer pesel) {
+    public void setPesel(Long pesel) {
         this.pesel = pesel;
     }
 

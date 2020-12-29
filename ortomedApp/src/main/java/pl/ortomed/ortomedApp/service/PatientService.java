@@ -1,19 +1,25 @@
 package pl.ortomed.ortomedApp.service;
 
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import pl.ortomed.ortomedApp.model.Patient;
 import pl.ortomed.ortomedApp.repository.PatientRepository;
 
+import javax.mail.MessagingException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.*;
 
 @Service
 public class PatientService {
 
     private PatientRepository patientRepository;
+    private MailService mailService;
 
-    public PatientService(PatientRepository patientRepository) {
+    public PatientService(PatientRepository patientRepository, MailService mailService) {
         this.patientRepository = patientRepository;
+        this.mailService = mailService;
     }
 
     public List<Patient> showAll(){
@@ -22,7 +28,7 @@ public class PatientService {
 
     public Optional<Patient> findById(Long id){return patientRepository.findById(id);}
 
-    public List<Patient> findByPesel(Integer pesel){ //can be more than one visit per patient
+    public List<Patient> findByPesel(Long pesel){ //can be more than one visit per patient
             List list = new ArrayList();
         for (Patient tempPatient : patientRepository.findAll()){
             if(tempPatient.getPesel() == pesel){
@@ -38,6 +44,15 @@ public class PatientService {
     public Boolean deletePatient(Patient patient){
         patientRepository.delete(patient);
         return !patientRepository.findAll().contains(patient);
+    }
+
+    @Scheduled(cron = "0 0 10 * * ?")   //check every day at 10AM
+    public void sendMailReminder() throws MessagingException {
+        for (Patient remindPatient : patientRepository.findAll()) {
+               if (remindPatient.getDateOfVisit().getDayOfMonth() - LocalDate.now().getDayOfMonth() == 3) { //remind 3 days before
+                mailService.sendMailReminder(remindPatient, true);
+            }
+        }
     }
 
     //free hours for visits depended on chosen day

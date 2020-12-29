@@ -24,7 +24,7 @@ public class MailService {
                 "Wizyta odbędzię się dnia: <b>" + patient.getDateOfVisit().toString() + "</b>, o godzinie: <b>" + patient.getTimeOfVisit() + "</b>"
                 + ".<br> Wkrótce otrzymasz następną wiadomość z hasłem, umożliwiającym sprawdzenie terminu wizyty na naszej stronie internetowej.<br> Pozdrawiamy,<br>Zespół OrtoMED." +
                 "<br>===========================================================================<br>" +
-                "===========================================================================<br>Ta wiadomość została wygenerowana automatycznie. Proszę na nią nie odpowiadać";
+                "===========================================================================<br>Ta wiadomość została wygenerowana automatycznie. Prosimy na nią nie odpowiadać";
         String subject = "OrtoMED - Potwierdzenie Rejestracji";
         String to = patient.getEmail();
 
@@ -34,14 +34,14 @@ public class MailService {
         mimeMessageHelper.setTo(to);
         mimeMessageHelper.setSubject(subject);
         mimeMessageHelper.setText(text, isHtmlContent);
-        mimeMessageHelper.setReplyTo("noreply@ORTOMET.pl");
+        mimeMessageHelper.setReplyTo("noreply@OrtoMED.pl");
         javaMailSender.send(mimeMessage);
     }
 
     public void sendMailPass(Patient patient, boolean isHtmlContent) throws MessagingException {
         String text = "Witaj " + patient.getFirstName() + ",<br> Twoje unikalkne hasło to: <b>" + patient.getPassword() + "</b>.<br> Pozdrawiamy,<br>Zespół OrtoMED."
         + "<br>===========================================================================<br>" +
-                "===========================================================================<br>Ta wiadomość została wygenerowana automatycznie. Proszę na nią nie odpowiadać";;
+                "===========================================================================<br>Ta wiadomość została wygenerowana automatycznie. Prosimy na nią nie odpowiadać";;
         String subject = "OrtoMED - Hasło do serwisu";
         String to = patient.getEmail();
 
@@ -50,7 +50,34 @@ public class MailService {
         mimeMessageHelper.setTo(to);
         mimeMessageHelper.setSubject(subject);
         mimeMessageHelper.setText(text, isHtmlContent);
-        mimeMessageHelper.setReplyTo("noreply@ORTOMET.pl");
+        mimeMessageHelper.setReplyTo("noreply@OrtoMED.pl");
         javaMailSender.send(mimeMessage);
     }
+
+    public void sendMailReminder(Patient patient, boolean isHtmlContent) throws MessagingException {
+        String text = "Witaj " + patient.getFirstName() + ",<br> Przypominamy o Twojej nadchodzącej wizycie w Orto-MED. <br><br> " +
+                "<table width=\"80%\" style=\"background-color: deepskyblue; border: solid\">" +
+                "    <tr>" +
+                "<th>Data</th><th>Godzina</th><th>Lekarz</th>" +
+                "    </tr>" +
+                "<tr style=\"text-align: center\">" +
+                "  <td>" + patient.getDateOfVisit() + "</td><td>" + patient.getTimeOfVisit() + "</td><td>" + patient.getDoctor() + "</td>" +
+                "    </tr>" +
+                "</table> <br>" +
+                "Pozdrawiamy,<br>Zespół OrtoMED."
+                + "<br>===========================================================================<br>" +
+                "===========================================================================<br>Ta wiadomość została wygenerowana automatycznie. Prosimy na nią nie odpowiadać";
+
+        String subject = "OrtoMED - Przypomnienie o zaplanowanej wizycie";
+        String to = patient.getEmail();
+
+        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+        MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
+        mimeMessageHelper.setTo(to);
+        mimeMessageHelper.setSubject(subject);
+        mimeMessageHelper.setText(text, isHtmlContent);
+        mimeMessageHelper.setReplyTo("noreply@OrtoMED.pl");
+        javaMailSender.send(mimeMessage);
+    }
+
 }

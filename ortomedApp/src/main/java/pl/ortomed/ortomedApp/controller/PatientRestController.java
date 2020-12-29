@@ -33,7 +33,7 @@ public class PatientRestController {
     }
 
     @GetMapping("/{pesel}")
-    public ResponseEntity<List<Patient>> findByPesel(@PathVariable Integer pesel) {
+    public ResponseEntity<List<Patient>> findByPesel(@PathVariable Long pesel) {
         if (!patientService.findByPesel(pesel).isEmpty()) {
             return ResponseEntity.ok(patientService.findByPesel(pesel));
         } else {
@@ -47,9 +47,13 @@ public class PatientRestController {
 //        Patient patient2 = new Patient();
 //        Patient patient3 = new Patient();
         patient1.setFirstName("Miko");
-        patient1.setEmail("walka@o2.pl");
+        patient1.setEmail("mikolaj_miki05@o2.pl");
         patient1.setPassword(1);
-        patient1.setDateOfVisit(LocalDate.now());
+        patient1.setDateOfVisit(LocalDate.of(2020, 12, 31));
+        patient1.setLastName("Lajk");
+        patient1.setDoctor("dr. Kuciapka");
+        patient1.setPesel(88122121875L);
+        patient1.setPhoneNumber(505601232);
         patient1.setTimeOfVisit("10:00");
 /*        patient2.setFirstName("Miko");
         patient2.setEmail("walka@o2.pl");

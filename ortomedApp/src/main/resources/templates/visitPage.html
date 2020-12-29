@@ -77,13 +77,13 @@
     <input type="button" onclick="showVisit()" id="submit" value="Wyszukaj">
 </form>
 
-<div id="tableplace" style="display: none">
-<table id="table" width="100%">
+<div id="tableplace" style="display: block">
+<table id="table" width="100%" style="background-color: deepskyblue; border: solid">
     <tr>
-<th>Imię</th><th>Nazwisko</th><th>Data</th><th>Godzina</th><th>Lekarz</th><th></th>
+<th style>Imię</th><th>Nazwisko</th><th>Data</th><th>Godzina</th><th>Lekarz</th>
     </tr>
     <tr style="text-align: center">
-        <td id="fname"></td><td id="lname"></td><td id="date"></td><td id="hour"></td><td id="doc"></td><td><a href="#" onclick="changeVisit()" id="change" style="text-align: center">Zmień</a></td><td><a href="#" id="delete" style="text-align: center">Anuluj</a></td>
+        <td id="fname"></td><td id="lname"></td><td id="date"></td><td id="hour"></td><td id="doc"></td><td><a href="#" onclick="changeVisit()" id="change" style="text-align: center; color: bisque">Zmień</a></td><td><a href="#" id="delete" style="text-align: center; color: bisque">Anuluj</a></td>
     </tr>
 </table>
     <p id="form"></p>
