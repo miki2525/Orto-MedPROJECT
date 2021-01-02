@@ -1,11 +1,54 @@
 <!DOCTYPE html>
-<html>
+    <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Ortomed</title>
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" >
+    <script src="../static/js/jquery.js" th:src="@{/js/jquery.js}"></script>
 </head>
 <body>
-<a href="/registration" style="width:1000px; display: block; color: blueviolet; text-align: right">Zarejestruj się</a>
-<a href="/visit" style="width:1000px; display: block; color: blueviolet; text-align: right">Wizyty</a>
+    <div class="container">
+    <header>
+    
+    <div id="lang"><a href="/"><img src="../static/img/pol.png" th:src="@{/img/pol.png}"></a><a href="/en"><img src="../static/img/eng.png" th:src="@{/img/eng.png}"></a></div>
+     <a id="logo" href="/"><img src="../static/img/logo.png" th:src="@{/img/logo.png}"></a>
+         
+       
+    <nav>
+        <ul>
+       <li> <a href="/registration">REJESTRACJA</a></li>
+        <li><a href="/visit">WIZYTY</a></li>
+       <li> <a href="/about">O NAS</a></li>
+        <li><a href="/contact">KONTAKT</a></li>
+            </ul>
+    </nav>
+    </header>
+    <div class="slideshow"><img src="../static/img/slide2.jpg" th:src="@{/img/slide2.jpg}"></div>
+    <div class="about">
+        <img src="../static/img/about.jpg" th:src="@{/img/about.jpg}">
+        <div id="about"><h1>O Zespole Orto-MED</h1><p>Orto-MED to zespół specjalistów w dziedzinie ortopedii i traumatologii narządu ruchu. Nasi lekarze posiadają przygotowanie i doświadczenie, a także świetny kontakt z pacjentem. Każdego dnia dokładamy wszelkich starań, aby osoby znajdujące się pod naszą opieką były zadowolone ze świadczonych przez nas usług, czuły się komfortowo i bezpiecznie.</p><div><a href="/about">WIĘCEJ O NAS</a></div></div>
+    </div>
+    <!----FadeIn/FadeOut na Scrolling---><div class="reason"><h2>Dlaczego warto skorzystać z naszych usług?</h2><div id="reason"><div><h5>Doświadczenie</h5><p>
+Nasz zespół tworzą lekarze z dużym doświadczeniem, pracujący w renomowanych placówkach służby zdrowia m.in. w Katedrze Ortopedii i Traumatologii Narządu Ruchu. Nieustannie podnoszą swoje kwalifikacje i poszerzają wiedzę medyczną uczestnicząc w kursach i szkoleniach organizowanych w Polsce i zagranicą. Umożliwia nam sprawne i kompleksowe leczenie pacjenta.</p></div><div><h5>Profesjonalizm</h5><p>
+Nasz zespół dokłada wszelkich starań, aby Pacjent czuł się komfortowo i wyjątkowo. Profesjonalizm to nasza myśl przewodnia. Tylko fachowy i wysoki poziom świadczonych przez nas usług medycznych jest gwarancją Państwa zadowolenia. W naszej pracy najważniejsze jest indywidualne podejście do Pacjenta.</p></div></div></div>
+    
+    <div class="wheretofindus"> <iframe id="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2316.4184332472014!2d18.529530051274907!3d54.50848159463133!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46fda723d00fbc6d%3A0x57e2ac6cad6d39d0!2sBydgoska%205a%2C%2081-305%20Gdynia!5e0!3m2!1spl!2spl!4v1609591863205!5m2!1spl!2spl" ></iframe><div id="h3"><h3>Gdzie się znajdujemy?</h3><p>ul. Bydgoska 5a, 81-305 Gdynia<br>Budynek Tower, 1 piętro</p></div></div>
+    <!----mapka dojazdu--->
+    
+    <div class="needhelp"><p>Chcesz umówić się na konsultacje?</p><div><a href="/registration">ZAREJESTRUJ SIĘ!</a></div></div>
+    
+    <footer>
+        <div class="partners"><p>Nasi Partnerzy</p><img  id="baltyk"src="../static/img/baltyk.png" th:src="@{/img/baltyk.png}"> 
+            <img id="lechia" src="../static/img/lechia.png" th:src="@{/img/lechia.png}">
+            <img src="../static/img/lech.png" th:src="@{/img/lech.png}"> <img src="../static/img/kif.png" th:src="@{/img/kif.png}"></div>
+        
+        
+        <div id="contact"><p> Kontakt:<br>ul. Bydgoska 5a, 81-305 Gdynia<br>
+Budynek Tower, 1 piętro<br> tel. 608-067-080</p><img src="../static/img/logo.png" th:src="@{/img/logo.png}"></div>
+        
+        
+        <div>©2021 Orto-MED<br>Design: Mikołaj Kalata</div>
+    </footer>
+        </div>
 </body>
 </html>
