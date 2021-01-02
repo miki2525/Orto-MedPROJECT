@@ -1,0 +1,116 @@
+
+.slideshow{
+    display: flex;
+    justify-content: space-around;
+}
+.slideshow img{
+    border: solid 10px lightseagreen;
+    border-radius: 10px;
+    margin-top: 10px;
+    height: 300px;
+    width: 50%;
+}
+.slideshow p{
+    font-size: 18px;
+    margin: 50px;
+    padding: 50px;
+}
+
+.form {
+    margin: 20px;
+    border-radius: 5px;
+  background-color: powderblue;
+  padding: 20px;
+  
+}
+
+.form p{
+    font-weight: 600;
+    text-align: center;
+}
+
+::-webkit-calendar-picker-indicator {
+     cursor: pointer}
+
+input[type=date], input[type=text], select{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  box-sizing: border-box;
+    font-size: 16px;
+    outline: none;
+}
+
+input[type=date]{
+    margin-top: 9px;
+    padding-top: 6px;
+    
+}
+
+input[type=date]:focus, input[type=text]:focus, select:focus{
+background-color: lightseagreen;
+    color: yellow;
+}
+    
+
+input[type=submit] {
+  width: 100%;
+  background-color: lightseagreen;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  opacity: 0.6;
+}
+
+
+.form2
+{
+    display: flex;
+    background-color: powderblue;
+    margin: 30px;
+    padding: 30px;
+    border-radius: 20px;
+    
+}
+
+.form2a{
+    margin: 30px;
+    position: relative;
+}
+
+.form2a input[type=submit]{
+   position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.form2b{
+    margin: 30px;
+    
+}
+
+#checkbox{
+    margin: 0;
+    padding-top: 0;
+    margin-bottom: 25px;
+    font-size: 11px;
+}
+
+
+.slideshow2 img{
+    width: 100%;
+    height: 400px;
+}
+
+.slideshow2 p{
+    margin-top: 0;
+    text-align: center;
+    font-size: 30px;
+}

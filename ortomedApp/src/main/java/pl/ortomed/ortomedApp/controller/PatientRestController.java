@@ -51,7 +51,7 @@ public class PatientRestController {
         patient1.setPassword(1);
         patient1.setDateOfVisit(LocalDate.of(2020, 12, 31));
         patient1.setLastName("Lajk");
-        patient1.setDoctor("dr. Kuciapka");
+        patient1.setDoctor("dr. Gargula");
         patient1.setPesel(88122121875L);
         patient1.setPhoneNumber(505601232);
         patient1.setTimeOfVisit("10:00");

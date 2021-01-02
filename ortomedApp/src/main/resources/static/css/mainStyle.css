@@ -8,7 +8,7 @@
 }
 
 p{
-    font-size: 25px;
+    font-size: 16px;
 }
 
 #lang{
@@ -157,6 +157,7 @@ h3{
     width: 55%;
     height: 350px;
     border: 10px solid lightseagreen; 
+    border-radius: 10px;
 }
 
 
@@ -223,3 +224,12 @@ footer img{
 #contact p{
     font-size: 15px;
 }
+
+
+#rights p{
+    font-size: 11px;
+    margin: 0;
+    padding: 0;
+}
+
+

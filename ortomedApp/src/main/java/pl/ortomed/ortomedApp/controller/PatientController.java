@@ -77,9 +77,12 @@ this.mailService = mailService;}
     ///sprawdzic czy podany mail dotyczy jednej osoby, jesli nie to
 //        mailService.sendMail(patient, true);
 //        mailService.sendMailPass(patient, true);
-        Random random = new Random();
-        int generateNumber = random.nextInt((1000000 - 100000 + 1) + 100000);
-        patient.setPassword(generateNumber);
+
+        if(patient.getPassword() == null) {
+            Random random = new Random();
+            int generateNumber = random.nextInt((1000000 - 100000 + 1) + 100000);
+            patient.setPassword(generateNumber);
+        }
         patientService.savePatient(patient);
         System.out.println(patient);
         return "successPage";

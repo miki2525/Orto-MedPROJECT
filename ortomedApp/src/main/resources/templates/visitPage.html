@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <script src="jquery.js"></script>
+    <script src="../static/js/jquery.js" th:src="@{/js/jquery.js}"></script>
     <script>
 
         var obj;
@@ -32,36 +32,43 @@
         }
 
         function deleteVisit() {
-            if (window.confirm("Czy napewno chcesz anulować swoją wizytę?")) {
-                xhttp = new XMLHttpRequest();
-                xhttp.open("POST", "api/delete", true);
-                xhttp.setRequestHeader("Content-Type", "application/json");
-                xhttp.send(JSON.stringify(obj));
-                xhttp.onreadystatechange = function () {
-                    if (this.readyState == 4 && this.status == 200) {
-                        if (xhttp.responseText) {
-                            $("#table").remove();
-                            $("#tableplace").slideDown("slow").html("Twoja wizyta została anulowana");
+
+                if (window.confirm("Czy napewno chcesz anulować swoją wizytę?")) {
+                    xhttp = new XMLHttpRequest();
+                    xhttp.open("POST", "api/delete", true);
+                    xhttp.setRequestHeader("Content-Type", "application/json");
+                    xhttp.send(JSON.stringify(obj));
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                            if (xhttp.responseText) {
+                                $("#table").remove();
+                                $("#tableplace").slideDown("slow").html("Twoja wizyta została anulowana");
+                            }
                         }
                     }
                 }
-            }
         }
-        function changeVisit(){
-                xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    $("#form").html(xhttp.responseText);
-                    $("#loading").hide();
-                }
-                else{
-                    $("#loading").show();
-                    $("#loading").animate({height: '300px', opacity: '0.4'}, "fast");
-                }
+        function changeVisit(event) {
+            var dontRepeat = false;
+            event.preventDefault();
+            if (!dontRepeat) {
+                dontRepeat = true;
+                if (window.confirm("Czy napewno chcesz zmienić termin swojej wizyty?")) {
+                    xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                            $("body").html(xhttp.responseText);
+                            $("#loading").hide();
+                        } else {
+                            $("#loading").show();
+                            $("#loading").animate({height: '300px', opacity: '0.4'}, "fast");
+                        }
 
+                    }
+                    xhttp.open("get", "/registration?id=" + obj.id, true);
+                    xhttp.send();
+                }
             }
-                xhttp.open("get", "/registration?id=" + obj.id, true);
-                xhttp.send();
         }
 
     </script>
@@ -72,12 +79,12 @@
 <p>Prosimy o podanie poniższych danych , aby móc sprawdzić termin Twojej wizyty.</p>
 
 <form>
-    <p>Adres e-mail: <input type="text" name="email" id="email" value="walka@o2.pl"></p>
+    <p>Adres e-mail: <input type="text" name="email" id="email" value="mikolaj_miki05@o2.pl"></p>
     <p>Hasło: <input type="text" name="pass" id="pass" value="1"></p>
     <input type="button" onclick="showVisit()" id="submit" value="Wyszukaj">
 </form>
 
-<div id="tableplace" style="display: block">
+<div id="tableplace" style="display: none">
 <table id="table" width="100%" style="background-color: deepskyblue; border: solid">
     <tr>
 <th style>Imię</th><th>Nazwisko</th><th>Data</th><th>Godzina</th><th>Lekarz</th>

@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
+    <meta charset="UTF-8">
+    <title>ORTOMED-REGISTRATION</title>
+    <link rel="stylesheet" href="../static/css/mainStyle.css" th:href="@{/css/mainStyle.css}" >
+    <link rel="stylesheet" href="../static/css/forms.css" th:href="@{/css/forms.css}" >
+    <script src="../static/js/jquery.js" th:src="@{/js/jquery.js}"></script>
     <script>
         //onload="noBack();"
         // onpageshow="if (event.persisted) noBack();" onunload=""
@@ -31,27 +36,56 @@
 <!--        window.history.forward();-->
 <!--        function noBack() { window.history.forward(); }-->
 <!--      </SCRIPT> -->
-    <meta charset="UTF-8">
-    <title>Registration</title>
 </head>
 
 <body>
+<div class="container">
 
-
-<form th:action="@{/registration/success}" th:object="${patient}" method="post">
-    <p>Data: <input type="date" th:value="${patient.dateOfVisit}" th:field="*{dateOfVisit}" readonly="true">
-    <select th:field="*{timeOfVisit}">
+    <header>    
+    <div id="lang"><a href="/"><img src="../static/img/pol.png" th:src="@{/img/pol.png}"></a><a href="/en"><img src="../static/img/eng.png" th:src="@{/img/eng.png}"></a></div>
+     <a id="logo" href="/"><img src="../static/img/logo.png" th:src="@{/img/logo.png}"></a>
+    
+        <nav>
+        <ul>
+       <li> <a href="/registration">REJESTRACJA</a></li>
+        <li><a href="/visit">WIZYTY</a></li>
+       <li> <a href="/about">O NAS</a></li>
+        <li><a href="/contact">KONTAKT</a></li>
+            </ul>
+        </nav>
+         </header>
+    
+    <div class="slideshow2"><img src="../static/img/registration2.jpg" th:src="@{/img/registration2.jpg}">
+        <p>Prosimy o uzupełnienie formularza rejestracji</p>
+    </div>
+    
+<form th:action="@{/registration/success}" th:object="${patient}" method="post" class="form2">
+    <div class="form2a">
+    
+        <label for="date">Data</label><input type="date" id="date" th:value="${patient.dateOfVisit}" th:field="*{dateOfVisit}" readonly="true">
+        <label for="time">Godzina</label><select id="time" th:field="*{timeOfVisit}">
         <option th:each="hour : ${hours}" th:value="${hour}" th:text="${hour}"></option>
-    </select></p>
-    <p>Lekarz: <input type="text" th:value="${patient.doctor}" th:field="*{doctor}" readonly></p>
-    <p>Imię: <input type="text" id="name" th:value="${patient.firstName}" th:field="*{firstName}">
-    <p>Nazwisko: <input type="text" th:value="${patient.lastName}" th:field="*{lastName}"></p>
-    <p>PESEL*: <input type="text" id="pesel" th:value="${patient.pesel}" th:field="*{pesel}"></p>
-    <p><label for="foreigner"> <font size="2">*Zaznacz tylko, jeśli jesteś obcokrajowcem. Check the box, only if you are the foreigner.</font></label>
-    <input type="checkbox" id="foreigner" style="cursor: pointer"></p>
-    <p>Numer telefonu: <input type="text" th:value="${patient.phoneNumber}" th:field="*{phoneNumber}"></p>
-    <p>Adres e-mail: <input type="text" th:value="${patient.email}" th:field="*{email}"></p>
-    <input type="submit" id="submit" value="Zarejestruj"> <input type="reset" id="reset" value="Resetuj dane">
+    </select>
+    
+        <label for="doc">Lekarz</label><input id="doc" type="text" th:value="${patient.doctor}" th:field="*{doctor}" readonly>
+        <input type="submit" id="submit" value="REJESTRUJ">
+    </div>
+    
+    <div class="form2b">
+    
+        <label for="name">Imię</label><input type="text" id="name" th:value="${patient.firstName}" th:field="*{firstName}">
+    
+        <label for="lname">Nazwisko</label> <input type="text" id="lname" th:value="${patient.lastName}" th:field="*{lastName}">
+    
+        <label for="pesel">PESEL*</label> <input type="text" id="pesel" th:value="${patient.pesel}" th:field="*{pesel}">
+        <p id="checkbox"><label for="foreigner">*Zaznacz tylko, jeśli jesteś obcokrajowcem. Check the box, only if you are the foreigner.</label>
+        <input type="checkbox" id="foreigner" style="cursor: pointer"></p>
+    
+        <label for="phnumber">Numer telefonu</label> <input  id="phnumber" type="text" th:value="${patient.phoneNumber}" th:field="*{phoneNumber}">
+    
+        <label for="mail">Adres e-mail</label> <input type="text" id="mail" th:value="${patient.email}" th:field="*{email}">
+    </div>
+    
 
     <!--Patient wanted to change the visit-->
     <div class="update" style="display: none">
@@ -60,5 +94,18 @@
     <!-------------------------------------->
 
 </form>
+        <footer>
+        <div class="partners"><p>Nasi Partnerzy</p><img  id="baltyk"src="../static/img/baltyk.png" th:src="@{/img/baltyk.png}"> 
+            <img id="lechia" src="../static/img/lechia.png" th:src="@{/img/lechia.png}">
+            <img src="../static/img/lech.png" th:src="@{/img/lech.png}"> <img src="../static/img/kif.png" th:src="@{/img/kif.png}"></div>
+        
+        
+        <div id="contact"><p> Kontakt:<br>ul. Bydgoska 5a, 81-305 Gdynia<br>
+Budynek Tower, 1 piętro<br> tel. +48 791 50 53 22</p><img src="../static/img/logo.png" th:src="@{/img/logo.png}"></div>
+        
+        
+        <div id="rights"><p>©2021 Orto-MED</p><p>Design: Mikołaj Kalata</p></div>
+    </footer>
+    </div>
 </body>
 </html>

@@ -59,7 +59,7 @@ public class PatientService {
     public List<String> showFreeHours(LocalDate currentDay, String doctor){
         List<String> freeHoursList = new ArrayList<>();
         TreeMap<String, Boolean> tempMap = new TreeMap<String, Boolean>();
-        String morningDoc = "dr. Kuciapka";
+        String morningDoc = "dr. Gargula";
         String afternoonDoc = "dr. Tarman";
 
         for(int i = 8; i <= 19; i++) {               ///office open 8:00 - 19:30
