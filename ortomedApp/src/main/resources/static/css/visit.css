@@ -1,0 +1,33 @@
+body{
+    display: relative;
+}
+
+p{
+
+    font-weight: 600;
+}
+
+input[type=button]{
+    background-color: lightseagreen;
+    color: yellow;
+    cursor: pointer;
+}
+
+input[type=button]:hover{
+    opacity: 0.7;
+    font-weight: 600;
+}
+
+#eye{
+    cursor: pointer;
+    width: 20px;
+}
+
+#back {
+ opacity: 0.5;
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: -1;   
+    
+}

@@ -6,9 +6,8 @@
     <link rel="stylesheet" href="../static/css/mainStyle.css" th:href="@{/css/mainStyle.css}" >
     <link rel="stylesheet" href="../static/css/forms.css" th:href="@{/css/forms.css}" >
     <script src="../static/js/jquery.js" th:src="@{/js/jquery.js}"></script>
-    <script>var x = $("#id").val();
-    console.log(x)</script>
-</head>
+    <script src="../static/js/dateRegisterPage.js"> th:src="@{/js/dateRegisterPage.js}"</script>
+    </head>
     
 <body>
     <div class="container">
@@ -28,14 +27,14 @@
         
         <div class="form">
         <p id="update">Dostępna jest także rejestracja online. Najszybciej można się zarejestrować na następny dzień roboczy.</p>
-<form action="#" th:action="@{/registration}" th:object="${patient}" method="post">
+<form action="#" th:action="@{/registration/step2}" th:object="${patient}" method="post">
     
     <label for="date">Wybierz dzień wizyty </label>
     <input type="date" th:field="*{dateOfVisit}" id="date" max="2021-11-11">
  
-    <label for="doc">Wybierz lekarza </label>
+    <label>Wybierz lekarza </label>
     <select th:field="*{doctor}">
-        <option th:value="''" selected="true" disabled="disabled" id="doc">----Wybierz lekarza----</option>
+        <option th:value="''" selected="true" disabled="disabled">----Wybierz lekarza----</option>
         <option th:value="'dr. Gargula'">dr. Gargula</option>
         <option th:value="'dr. Tarman'">dr. Tarman</option>
     </select>

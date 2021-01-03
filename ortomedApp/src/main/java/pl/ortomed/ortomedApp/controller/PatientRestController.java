@@ -1,6 +1,8 @@
 package pl.ortomed.ortomedApp.controller;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import pl.ortomed.ortomedApp.model.Patient;
 
@@ -22,9 +24,11 @@ public class PatientRestController {
 
 
     PatientService patientService;
+    PatientController patientController;
 
-    public PatientRestController(PatientService patientService){
-        this.patientService = patientService; }
+    public PatientRestController(PatientService patientService, PatientController patientController){
+        this.patientService = patientService;
+        this.patientController = patientController;}
 
     @GetMapping
     public ResponseEntity<List<Patient>> showPatient(){
@@ -82,7 +86,8 @@ public class PatientRestController {
         }
         return ResponseEntity.ok(visit);
         }
-    @PostMapping("/delete")
+
+        @PostMapping("/delete")
         ResponseEntity<Boolean> cancelVisit(@RequestBody Patient patient){
         return ResponseEntity.ok(patientService.deletePatient(patient));
         }

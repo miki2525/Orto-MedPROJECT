@@ -1,86 +1,21 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
+    <link rel="stylesheet" href="../static/css/visit.css" th:href="@{/css/visit.css}">
     <script src="../static/js/jquery.js" th:src="@{/js/jquery.js}"></script>
-    <script>
-
-        var obj;
-        function showVisit() {
-            var xhttp = new XMLHttpRequest();
-            var email = $("#email").val();
-            var pass = $("#pass").val();
-            xhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    obj = JSON.parse(this.responseText);
-                    if (obj.id != null) {
-                        $("#fname").html(obj.firstName);
-                        $("#lname").html(obj.lastName);
-                        $("#date").html(obj.dateOfVisit);
-                        $("#hour").html(obj.timeOfVisit);
-                        $("#doc").html(obj.doctor);
-                        $("#tableplace").slideDown("slow");
-                        document.getElementById("delete").addEventListener("click", deleteVisit);
-                        document.getElementById("change").addEventListener("click", changeVisit);
-                    } else {
-                      $("#tableplace").slideDown("slow").html("Brak wyników. Sprawdź poprawność danych.")
-                    }
-                }
-            }
-            xhttp.open("POST", "/api/showVisit", true)
-            xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhttp.send("email=" + email + "&pass=" + pass);
-        }
-
-        function deleteVisit() {
-
-                if (window.confirm("Czy napewno chcesz anulować swoją wizytę?")) {
-                    xhttp = new XMLHttpRequest();
-                    xhttp.open("POST", "api/delete", true);
-                    xhttp.setRequestHeader("Content-Type", "application/json");
-                    xhttp.send(JSON.stringify(obj));
-                    xhttp.onreadystatechange = function () {
-                        if (this.readyState == 4 && this.status == 200) {
-                            if (xhttp.responseText) {
-                                $("#table").remove();
-                                $("#tableplace").slideDown("slow").html("Twoja wizyta została anulowana");
-                            }
-                        }
-                    }
-                }
-        }
-        function changeVisit(event) {
-            var dontRepeat = false;
-            event.preventDefault();
-            if (!dontRepeat) {
-                dontRepeat = true;
-                if (window.confirm("Czy napewno chcesz zmienić termin swojej wizyty?")) {
-                    xhttp = new XMLHttpRequest();
-                    xhttp.onreadystatechange = function () {
-                        if (this.readyState == 4 && this.status == 200) {
-                            $("body").html(xhttp.responseText);
-                            $("#loading").hide();
-                        } else {
-                            $("#loading").show();
-                            $("#loading").animate({height: '300px', opacity: '0.4'}, "fast");
-                        }
-
-                    }
-                    xhttp.open("get", "/registration?id=" + obj.id, true);
-                    xhttp.send();
-                }
-            }
-        }
-
-    </script>
+    <script src="../static/js/visitPage.js" th:src="@{/js/visitPage.js}"></script>
     <meta charset="UTF-8">
     <title>ORTOMED</title>
 </head>
 <body>
-<p>Prosimy o podanie poniższych danych , aby móc sprawdzić termin Twojej wizyty.</p>
+    
+    <img id="back"src="../static/img/padlock.jpg" th:src="@{/img/padlock.png}">
+    
+    <p>Prosimy o podanie poniższych danych , aby móc sprawdzić termin Twojej wizyty.</p>
 
 <form>
     <p>Adres e-mail: <input type="text" name="email" id="email" value="mikolaj_miki05@o2.pl"></p>
-    <p>Hasło: <input type="text" name="pass" id="pass" value="1"></p>
+    <p>Hasło: <input type="password" name="pass" id="pass" value="1"> <img id="eye" src="../static/img/preview.jpg" th:src="@{/img/preview.jpg}"></p>
     <input type="button" onclick="showVisit()" id="submit" value="Wyszukaj">
 </form>
 
@@ -93,8 +28,10 @@
         <td id="fname"></td><td id="lname"></td><td id="date"></td><td id="hour"></td><td id="doc"></td><td><a href="#" onclick="changeVisit()" id="change" style="text-align: center; color: bisque">Zmień</a></td><td><a href="#" id="delete" style="text-align: center; color: bisque">Anuluj</a></td>
     </tr>
 </table>
-    <p id="form"></p>
+    
 </div>
+    
+    
 <div id="loading" style="background-color: black; display: none"><p style="color: white">LOADING</p></div>
 </body>
 </html>

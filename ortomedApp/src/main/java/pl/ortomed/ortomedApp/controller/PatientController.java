@@ -29,23 +29,20 @@ this.mailService = mailService;}
 
 
 @GetMapping("/registration")
-    public String showDateRegisterPage(@RequestParam (value = "id", required = false, defaultValue = "0") Long id ,  Model model){
-    Patient patient = null;
-    if (id > 0L) {          /////////////////UPDATE OLD PATIENT
-        for(Patient temppatient : patientService.showAll()) {
-            if (temppatient.getId() == id) {
-                patient = temppatient;
-                model.addAttribute("patient", patient);
-            }
-        }
-    } else {               /////////////////CREATE NEW PATIENT
-        patient = new Patient();
+    public String showDateRegisterPage(Model model){
+
+        Patient patient = new Patient();
         model.addAttribute("patient", patient);
+        return "dateRegisterPage";
     }
+
+@PostMapping("/registration")
+    public String showDateRegisterPage(@RequestBody Patient patient, Model model){//(@RequestParam (value = "id", required = false, defaultValue = "0") Long id ,  Model model){
+    model.addAttribute("patient", patient);
     return "dateRegisterPage";
 }
 
-@PostMapping("/registration")
+@PostMapping("/registration/step2")
   public String showRegisterPage(@ModelAttribute Patient patient, Model model){
 
         //////walidacja po w js
@@ -78,11 +75,11 @@ this.mailService = mailService;}
 //        mailService.sendMail(patient, true);
 //        mailService.sendMailPass(patient, true);
 
-        if(patient.getPassword() == null) {
+//        if(patient.getPassword() == null) { ////      new || updated visit means new password
             Random random = new Random();
             int generateNumber = random.nextInt((1000000 - 100000 + 1) + 100000);
             patient.setPassword(generateNumber);
-        }
+        //}
         patientService.savePatient(patient);
         System.out.println(patient);
         return "successPage";
