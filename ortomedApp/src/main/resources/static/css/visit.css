@@ -1,13 +1,13 @@
 body{
-    display: relative;
+    position: relative;
 }
 
 p{
-
     font-weight: 600;
 }
 
 input[type=button]{
+    position: absolute;
     background-color: lightseagreen;
     color: yellow;
     cursor: pointer;
@@ -28,6 +28,16 @@ input[type=button]:hover{
   top: 0;
   left: 0;
   position: absolute;
-  z-index: -1;   
-    
+    z-index: -1;
+
+}
+
+#loading{
+    background-color: black;
+    display: none;
+    color: white;
+}
+
+#loading p{
+    color: white;
 }

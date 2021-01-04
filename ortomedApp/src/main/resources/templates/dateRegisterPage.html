@@ -6,7 +6,16 @@
     <link rel="stylesheet" href="../static/css/mainStyle.css" th:href="@{/css/mainStyle.css}" >
     <link rel="stylesheet" href="../static/css/forms.css" th:href="@{/css/forms.css}" >
     <script src="../static/js/jquery.js" th:src="@{/js/jquery.js}"></script>
-    <script src="../static/js/dateRegisterPage.js"> th:src="@{/js/dateRegisterPage.js}"</script>
+    <script src="../static/js/dateRegisterPage.js" th:src="@{/js/dateRegisterPage.js}"></script>
+<script>
+
+    /*window.onload = function () {
+        console.log("ID to: " + document.getElementById("id").value);
+        if(document.getElementById("id").value > 0){
+            document.getElementById("update").innerHTML("Wypełnij poniższe pola, aby zmienić termin. Zmiana terminu możliwa jest najpóźniej na jeden dzień przed planowaną wizytą.");
+        }
+    };*/
+</script>
     </head>
     
 <body>
@@ -17,7 +26,7 @@
     <nav>
         <ul>
        <li> <a href="/registration">REJESTRACJA</a></li>
-        <li><a href="/visit">WIZYTY</a></li>
+        <li><a href="/visit">WIZYTA</a></li>
        <li> <a href="/about">O NAS</a></li>
         <li><a href="/contact">KONTAKT</a></li>
             </ul>

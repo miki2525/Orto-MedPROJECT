@@ -37,7 +37,7 @@ this.mailService = mailService;}
     }
 
 @PostMapping("/registration")
-    public String showDateRegisterPage(@RequestBody Patient patient, Model model){//(@RequestParam (value = "id", required = false, defaultValue = "0") Long id ,  Model model){
+    public String showDateRegisterPage(@RequestBody Patient patient, Model model){
     model.addAttribute("patient", patient);
     return "dateRegisterPage";
 }

@@ -11,31 +11,33 @@ $(function(){
    });
     
 var obj;
+document.getElementById("submit").addEventListener("click", showVisit);
+
 function showVisit() {
-    var xhttp = new XMLHttpRequest();
-    var email = $("#email").val();
-    var pass = $("#pass").val();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            obj = JSON.parse(this.responseText);
-            if (obj.id != null) {
-                $("#fname").html(obj.firstName);
-                $("#lname").html(obj.lastName);
-                $("#date").html(obj.dateOfVisit);
-                $("#hour").html(obj.timeOfVisit);
-                $("#doc").html(obj.doctor);
-                $("#tableplace").slideDown("slow");
-                document.getElementById("delete").addEventListener("click", deleteVisit);
-                document.getElementById("change").addEventListener("click", changeVisit);
-            } else {
-                $("#tableplace").slideDown("slow").html("Brak wyników. Sprawdź poprawność danych.")
+        var xhttp = new XMLHttpRequest();
+        var email = $("#email").val();
+        var pass = $("#pass").val();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                obj = JSON.parse(this.responseText);
+                if (obj.id != null) {
+                    $("#fname").html(obj.firstName);
+                    $("#lname").html(obj.lastName);
+                    $("#date").html(obj.dateOfVisit);
+                    $("#hour").html(obj.timeOfVisit);
+                    $("#doc").html(obj.doctor);
+                    $("#tableplace").slideDown("slow");
+                    document.getElementById("delete").addEventListener("click", deleteVisit);
+                    document.getElementById("change").addEventListener("click", changeVisit);
+                } else {
+                    $("#tableplace").slideDown("slow").html("Brak wyników. Sprawdź poprawność danych.")
+                }
             }
         }
+        xhttp.open("POST", "/api/showVisit", true)
+        xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhttp.send("email=" + email + "&pass=" + pass);
     }
-    xhttp.open("POST", "/api/showVisit", true)
-    xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhttp.send("email=" + email + "&pass=" + pass);
-}
 
 function deleteVisit() {
 
@@ -64,10 +66,10 @@ function changeVisit(event) {
             xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
-                    var index = window.opener;
-                    index.document.write(xhttp.responseText);
-                    window.parent.close();
-                    $("#loading").hide();
+                    setTimeout(function (){
+                        window.opener.parent.$("body").html(xhttp.responseText);
+                        window.parent.close();
+                        $("#loading").hide();}, 3000);
                 } else {
                     $("#loading").show();
                     $("#loading").animate({height: '300px', opacity: '0.4'}, "slow");
