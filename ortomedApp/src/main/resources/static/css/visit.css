@@ -7,7 +7,7 @@ p{
 }
 
 input[type=button]{
-    position: absolute;
+
     background-color: lightseagreen;
     color: yellow;
     cursor: pointer;
@@ -40,4 +40,16 @@ input[type=button]:hover{
 
 #loading p{
     color: white;
+}
+
+#tableplace {
+    margin-top: 10px;
+    position: absolute;
+    display: none;
+}
+
+#table{
+    width: 100%;
+    background-color: deepskyblue;
+    border: solid;
 }
