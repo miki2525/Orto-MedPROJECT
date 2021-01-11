@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>ORTOMED-ABOUT</title>
+    <link rel="stylesheet" href="../static/css/mainStyle.css" th:href="@{/css/mainStyle.css}" >
+    <link rel="stylesheet" href="../static/css/aboutPhotos.css" th:href="@{/css/aboutPhotos.css}" >
+    <script src="../static/js/jquery.js" th:src="@{/js/jquery.js}"></script>
+        </head>
+    
+<body>
+    <div class="slideBackground">
+        <div class="slide fade">
+            <div class="doctor">dr n. med Nikolai Tarman</div>
+            <img src="../static/img/drTarman.jpg" title="Specjalista"th:src="@{/img/drTarman.jpg}">
+        </div>
+            <div class="slide fade">
+            <div class="doctor">dr n. med Krzysztof Gargula</div>
+            <img src="../static/img/drGargula.jpg" th:src="@{/img/drGargula.jpg}">
+        </div>
+        <a class="prev">&#8249</a>
+        <a class="next">&#8250</a>
+    </div>
+    <div class="container">
+<header>    
+    <div id="lang"><a href="/"><img src="../static/img/pol.png" th:src="@{/img/pol.png}"></a><a href="/en"><img src="../static/img/eng.png" th:src="@{/img/eng.png}"></a></div>
+     <a id="logo" href="/"><img src="../static/img/logo.png" th:src="@{/img/logo.png}"></a>
+    <nav>
+        <ul>
+       <li> <a href="/registration" title="Zarejestruj się">REJESTRACJA</a></li>
+        <li><a href="/visit" title="Sprawdź wizytę">WIZYTA</a></li>
+       <li> <a href="/about" title="Przeczytaj o nas">O NAS</a></li>
+        <li><a href="/contact" title="Skontaktuj się z nami">KONTAKT</a></li>
+            </ul>
+    </nav>
+         </header>
+        <div class="slideshow"><img src="../static/img/office.jpg" th:src="@{/img/office.jpg}"></div>
+        <div class="content">
+            <h2>Orto-MED – o nas</h2>
+            <p>
+Orthopedics to zespół specjalistów w dziedzinie ortopedii i traumatologii narządu ruchu. Nasi lekarze posiadają przygotowanie i doświadczenie, a także świetny kontakt z pacjentem. Każdego dnia zajmują się zapobieganiem, rozpoznawaniem i leczeniem schorzeń, urazów wrodzonych oraz nabytych nieprawidłowości układu kostno-mięśniowo-stawowego (narządu ruchu) jak również usprawnianiem pourazowym.Dokładamy wszelkich starań, aby osoby znajdujące się pod naszą opieką były zadowolone ze świadczonych przez nas usług, czuły się komfortowo i bezpiecznie.
+Nasz zespół tworzą lekarze z dużym doświadczeniem, pracujący w renomowanych placówkach służby zdrowia m.in. w Katedrze Ortopedii i Traumatologii Narządu Ruchu. Nieustannie podnoszą swoje kwalifikacje i poszerzają wiedzę medyczną uczestnicząc w kursach i szkoleniach organizowanych w Polsce i za granicą. </p>
+            <div class="photos"><div class="photo"><div id="curtain"><p>&#128269</p></div><div class="caption">dr n. med Nikolai Tarman</div><img src="../static/img/drTarman.jpg" th:src="@{/img/drTarman.jpg}"></div><div class="photo"><div id="curtain"><p>&#128269</p></div><div class="caption">dr n. med Krzysztof Gargula</div><img src="../static/img/drGargula.jpg" th:src="@{/img/drGargula.jpg}"></div></div>
+        </div>
+        
+        <footer>
+        <div class="partners"><p>Nasi Partnerzy</p><img  id="baltyk"src="../static/img/baltyk.png" th:src="@{/img/baltyk.png}"> 
+            <img id="lechia" src="../static/img/lechia.png" th:src="@{/img/lechia.png}">
+            <img src="../static/img/lech.png" th:src="@{/img/lech.png}"> <img src="../static/img/kif.png" th:src="@{/img/kif.png}"></div>
+        
+        
+        <div id="contact"><p> Kontakt:<br>ul. Bydgoska 5a, 81-305 Gdynia<br>
+Budynek Tower, 1 piętro<br> tel. +48 791 50 53 22</p><img src="../static/img/logo.png" th:src="@{/img/logo.png}"></div>
+        
+        
+        <div id="rights"><p>©2021 Orto-MED</p><p>Design: Mikołaj Kalata</p></div>
+    </footer>
+    </div>
+</body>
+</html>

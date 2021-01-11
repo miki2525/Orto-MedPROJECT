@@ -28,6 +28,12 @@ this.mailService = mailService;}
 }
 
 
+@GetMapping("/about")
+    public String showAbout(){
+    return "aboutPage";
+}
+
+
 @GetMapping("/registration")
     public String showDateRegisterPage(Model model){
 

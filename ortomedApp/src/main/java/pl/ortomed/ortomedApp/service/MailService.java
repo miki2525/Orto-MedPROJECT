@@ -39,7 +39,8 @@ public class MailService {
     }
 
     public void sendMailPass(Patient patient, boolean isHtmlContent) throws MessagingException {
-        String text = "Witaj " + patient.getFirstName() + ",<br> Twoje unikalkne hasło to: <b>" + patient.getPassword() + "</b>.<br> Pozdrawiamy,<br>Zespół OrtoMED."
+        String text = "Witaj " + patient.getFirstName() + ",<br> Twoje unikalkne hasło to: <b>" + patient.getPassword() + "</b>.<br>" +
+                "Aby sprawdzić wizytę wejdź w zakładkę 'WIZYTY' na naszej stronie.<br> Pozdrawiamy,<br>Zespół OrtoMED."
         + "<br>===========================================================================<br>" +
                 "===========================================================================<br>Ta wiadomość została wygenerowana automatycznie. Prosimy na nią nie odpowiadać";;
         String subject = "OrtoMED - Hasło do serwisu";

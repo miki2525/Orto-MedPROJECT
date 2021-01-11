@@ -47,9 +47,3 @@ input[type=button]:hover{
     position: absolute;
     display: none;
 }
-
-#table{
-    width: 100%;
-    background-color: deepskyblue;
-    border: solid;
-}

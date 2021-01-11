@@ -136,6 +136,7 @@ h5{
 
 
 .wheretofindus{
+    position: relative;
     display: flex;
     justify-content: space-between;
 }
@@ -151,6 +152,7 @@ h3{
     text-align: right;
 }
 
+   
 #map{
     margin-top: 40px;
     margin-left: 10px;
@@ -231,5 +233,6 @@ footer img{
     margin: 0;
     padding: 0;
 }
+
 
 

@@ -1,0 +1,11 @@
+p:nth-child(3){
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+    
+#table{
+    width: 100%;
+    background-color: deepskyblue;
+    border: solid;
+    margin-bottom: 10px;
+}
