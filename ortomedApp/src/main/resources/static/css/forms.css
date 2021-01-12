@@ -36,11 +36,14 @@ input[type=date], input[type=text], select{
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
-  border: 1px solid #ccc;
   border-radius: 20px;
   box-sizing: border-box;
     font-size: 16px;
     outline: none;
+}
+
+select{
+    border: solid 2px;
 }
 
 input[type=date]{
@@ -60,8 +63,9 @@ input[type=submit] {
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
-  border: none;
+  border: 0;
   cursor: pointer;
+
 }
 
 input[type=submit]:hover {
@@ -97,11 +101,15 @@ input[type=submit]:disabled:hover{
    position: absolute;
     bottom: 0;
     left: 0;
+
 }
 
 .form2b{
     margin: 30px;
     
+}
+.invalid{
+    border: red solid 2px;
 }
 
 #checkbox{
