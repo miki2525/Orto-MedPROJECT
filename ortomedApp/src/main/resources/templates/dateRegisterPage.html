@@ -2,20 +2,12 @@
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>ORTOMED-REGISTRATION</title>
+    <title>ORTOMED | REGISTRATION</title>
     <link rel="stylesheet" href="../static/css/mainStyle.css" th:href="@{/css/mainStyle.css}" >
     <link rel="stylesheet" href="../static/css/forms.css" th:href="@{/css/forms.css}" >
     <script src="../static/js/jquery.js" th:src="@{/js/jquery.js}"></script>
     <script src="../static/js/dateRegisterPage.js" th:src="@{/js/dateRegisterPage.js}"></script>
-<script>
-
-    /*window.onload = function () {
-        console.log("ID to: " + document.getElementById("id").value);
-        if(document.getElementById("id").value > 0){
-            document.getElementById("update").innerHTML("Wypełnij poniższe pola, aby zmienić termin. Zmiana terminu możliwa jest najpóźniej na jeden dzień przed planowaną wizytą.");
-        }
-    };*/
-</script>
+    <script src="../static/js/visitNewPage.js" th:src="@{/js/visitNewPage.js}"></script>
     </head>
     
 <body>
@@ -36,7 +28,7 @@
         
         <div class="form">
         <p id="update">Dostępna jest także rejestracja online. Najszybciej można się zarejestrować na następny dzień roboczy.</p>
-<form action="#" th:action="@{/registration/step2}" th:object="${patient}" method="post">
+<form action="#" id="form" th:action="@{/registration/step2}" th:object="${patient}" method="post">
     
     <label for="date">Wybierz dzień wizyty </label>
     <input type="date" th:field="*{dateOfVisit}" id="date" max="2021-11-11">
@@ -48,7 +40,7 @@
         <option th:value="'dr. Tarman'">dr. Tarman</option>
     </select>
     
-    <input type="submit" value="Sprawdź terminy">
+    <input type="submit" id="submit" value="Sprawdź terminy" disabled="disabled">
 
     <!--Patient wanted to change the visit-->
     <div class="update" style="display: none">
@@ -78,6 +70,3 @@ Budynek Tower, 1 piętro<br> tel. +48 791 50 53 22</p><img src="../static/img/lo
     </div>
 </body>
 </html>
-
-<!----w JS dodac mozliwosc wyboru daty max na 3 miesiace do przodu--->
-

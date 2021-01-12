@@ -33,6 +33,8 @@ this.mailService = mailService;}
     return "aboutPage";
 }
 
+@GetMapping("/contact")
+    public String showContact(){ return "contactPage";}
 
 @GetMapping("/registration")
     public String showDateRegisterPage(Model model){
@@ -51,7 +53,6 @@ this.mailService = mailService;}
 @PostMapping("/registration/step2")
   public String showRegisterPage(@ModelAttribute Patient patient, Model model){
 
-        //////walidacja po w js
         if(patient.getDateOfVisit()==null || patient.getDoctor() == ""){
             return "dateRegisterPage";
         }

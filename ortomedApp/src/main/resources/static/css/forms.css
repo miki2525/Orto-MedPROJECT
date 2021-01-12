@@ -54,7 +54,6 @@ background-color: lightseagreen;
     color: yellow;
 }
     
-
 input[type=submit] {
   width: 100%;
   background-color: lightseagreen;
@@ -67,6 +66,15 @@ input[type=submit] {
 
 input[type=submit]:hover {
   opacity: 0.6;
+}
+
+input[type=submit]:disabled{
+    background-color: grey;
+    cursor: default;
+}
+
+input[type=submit]:disabled:hover{
+    opacity: 1;
 }
 
 
