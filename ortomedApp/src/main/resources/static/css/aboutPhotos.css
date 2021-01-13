@@ -54,10 +54,6 @@
 }
 
 
-
-
-
-
 .slideBackground{
     display: none;
     margin: 0;
@@ -83,6 +79,7 @@
 }
 
 .doctor{
+    display: none;
     color: white;
     font-size: 25px;
     font-weight: 600;
@@ -90,16 +87,22 @@
 }
 
 .prev, .next{
-    color: white;
+    color: red;
     font-size: 1000%;
     font-weight: 600;
-    position: absolute;
+    position: fixed;
     top: 40%;
     margin: 0 60px;
     cursor: pointer;
+    z-index: 1;
+    display: none;
 }
 
 .next{
     right: 0;
+}
+
+.prev:hover, .next:hover{
+    color: white;
 }
 

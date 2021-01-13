@@ -31,14 +31,25 @@
     font-family: cursive;
     font-style: italic;
     cursor: default;
-}
-
-.closed{
-    background-color: red;
-}
-
-.open{
     background-color: lightseagreen;
     color: yellow;
 }
+
+#status.open{
+    visibility: hidden;
+}
+#status.closed{
+    color: black;
+    background-color: red;
+}
+
+#map{
+    margin-top: 40px;
+    margin-left: 10px;
+    width: 55%;
+    height: 350px;
+    border: 10px solid lightseagreen; 
+    border-radius: 10px;
+}
+
  
