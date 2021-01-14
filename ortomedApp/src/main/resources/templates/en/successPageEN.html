@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>ORTOMED | SUKCES</title>
+    <link rel="stylesheet" href="../../static/css/mainStyle.css" th:href="@{/css/mainStyle.css}" >
+     <link rel="stylesheet" href="../../static/css/contactStatus.css" th:href="@{/css/contactStatus.css}" >
+     <link rel="stylesheet" href="../../static/css/successTable.css" th:href="@{/css/successTable.css}" >
+    <script src="../../static/js/jquery.js" th:src="@{/js/jquery.js}"></script>
+    <script src="../../static/js/visitNewPageEN.js" th:src="@{/js/visitNewPageEN.js}"></script>
+<script>
+    window.onload = function() {
+        window.onbeforeunload = function () {
+            window.location.assign("/en/indexEN.html")
+        }
+    }
+</script>
+</head>
+
+<body>
+    <div class="container">
+    
+<header>
+    
+    <div id="lang"><a href="/"><img src="../../static/img/pol.png" th:src="@{/img/pol.png}"></a><a href="/en"><img src="../../static/img/eng.png" th:src="@{/img/eng.png}"></a></div>
+     <a id="logo" href="/en"><img src="../../static/img/logo.png" th:src="@{/img/logo.png}"></a>
+         
+       
+       <nav>
+                <ul>
+            <li> <a href="/en/registration" title="Register">REGISTRATION</a></li>
+            <li><a href="/en/visit" id="visit" title="Check visit">VISIT</a></li>
+            <li> <a href="/en/about" title="Read about us">ABOUT US</a></li>
+            <li><a href="/en/contact" title="Contact us">CONTACT</a></li>
+            </ul>
+    </nav>
+    </header>
+        <div class="slideshow"><img src="../../static/img/contact.jpg" th:src="@{/img/contact.jpg}"></div>
+        <div class="content">
+            <h3> Congratulations! We have recorded your visit! </h3>
+            <p>
+            A confirmation e-mail was sent to the e-mail address provided. You will also receive a message
+            with a password that allows you to check the date of your visit to our website. </p>
+            <p> Your registration: </p>
+            <table id="table">
+                <tr> <th> Date of consultation </th> <th> Time </th> <th> Doctor </th> </tr>
+                <tr><td th:text="${patient.dateOfVisit}"></td><td th:text="${patient.timeOfVisit}"></td><td th:text="${patient.doctor}"></td></tr>
+            </table>
+        </div>
+        <footer>
+        <div class="partners"><p>Our Partners</p><img  id="baltyk"src="../../static/img/baltyk.png" th:src="@{/img/baltyk.png}"> 
+            <img id="lechia" src="../../static/img/lechia.png" th:src="@{/img/lechia.png}">
+            <img src="../../static/img/lech.png" th:src="@{/img/lech.png}"> <img src="../../static/img/kif.png" th:src="@{/img/kif.png}"></div>
+        
+        
+        <div id="contact"><p> Contact:<br>ul. Bydgoska 5a St., 81-305 Gdynia<br>
+Tower's building, 1 floor<br> +48 791 50 53 22</p><img src="../../static/img/logo.png" th:src="@{/img/logo.png}"></div>
+        
+        
+        <div id="rights"><p>©2021 Orto-MED</p><p>Design: Mikołaj Kalata</p></div>
+    </footer>
+    </div>
+
+</body>
+</html>

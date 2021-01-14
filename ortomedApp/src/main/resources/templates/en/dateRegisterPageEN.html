@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>ORTOMED | REGISTRATION</title>
+    <link rel="stylesheet" href="../../static/css/mainStyle.css" th:href="@{/css/mainStyle.css}" >
+    <link rel="stylesheet" href="../../static/css/forms.css" th:href="@{/css/forms.css}" >
+    <script src="../../static/js/jquery.js" th:src="@{/js/jquery.js}"></script>
+    <script src="../../static/js/dateRegisterPage.js" th:src="@{/js/dateRegisterPage.js}"></script>
+    <script src="../../static/js/visitNewPageEN.js" th:src="@{/js/visitNewPageEN.js}"></script>
+    </head>
+    
+<body>
+    <div class="container">
+ <header>
+    
+    <div id="lang"><a href="/"><img src="../../static/img/pol.png" th:src="@{/img/pol.png}"></a><a href="/en"><img src="../../static/img/eng.png" th:src="@{/img/eng.png}"></a></div>
+     <a id="logo" href="/en"><img src="../../static/img/logo.png" th:src="@{/img/logo.png}"></a>
+         
+       
+    <nav>
+                <ul>
+            <li> <a href="/en/registration" title="Register">REGISTRATION</a></li>
+            <li><a href="/en/visit" id="visit" title="Check visit">VISIT</a></li>
+            <li> <a href="/en/about" title="Read about us">ABOUT US</a></li>
+            <li><a href="/en/contact" title="Contact us">CONTACT</a></li>
+            </ul>
+    </nav>
+    </header>        
+        <div class="slideshow"><img src="../../static/img/registration1.jpg" th:src="@{/img/registration1.jpg}"><p>
+Telephone registration open from 7:00 am to 8:00 pm, <br> from Monday to Friday.<br>Contact number: +48 791 50 53 22</p></div>
+        
+        <div class="form">
+        <p id="update">Online registration is also available. The fastest way to register for the next business day.</p>
+<form action="#" id="form" th:action="@{/en/registrationEN/step2}" th:object="${patient}" method="post">
+    
+    <label for="date">
+Choose the day of your visit </label>
+    <input type="date" th:field="*{dateOfVisit}" id="date">
+ 
+    <label>Choose your doctor </label>
+    <select th:field="*{doctor}">
+        <option th:value="''" selected="true" disabled="disabled">----Choose your doctor----</option>
+        <option th:value="'dr. Gargula'">dr. Gargula</option>
+        <option th:value="'dr. Tarman'">dr. Tarman</option>
+    </select>
+    
+    <input type="submit" id="submit" value="Check visits" disabled="disabled">
+
+    <!--Patient wanted to change the visit-->
+    <div class="update" style="display: none">
+    <input type="text" id="id" th:value="${patient.id}" th:field="*{id}">
+    <input type="text" th:value="${patient.firstName}" th:field="*{firstName}">
+    <input type="text" th:value="${patient.lastName}" th:field="*{lastName}">
+    <input type="text"  th:value="${patient.pesel}" th:field="*{pesel}">
+    <input type="text" th:value="${patient.phoneNumber}" th:field="*{phoneNumber}">
+    <input type="text" th:value="${patient.email}" th:field="*{email}">
+    </div>
+    <!-------------------------------------->
+
+</form>
+        </div>
+       <footer>
+        <div class="partners"><p>Our Partners</p><img  id="baltyk"src="../../static/img/baltyk.png" th:src="@{/img/baltyk.png}"> 
+            <img id="lechia" src="../../static/img/lechia.png" th:src="@{/img/lechia.png}">
+            <img src="../../static/img/lech.png" th:src="@{/img/lech.png}"> <img src="../../static/img/kif.png" th:src="@{/img/kif.png}"></div>
+        
+        
+        <div id="contact"><p> Contact:<br>ul. Bydgoska 5a St., 81-305 Gdynia<br>
+Tower's building, 1 floor<br> +48 791 50 53 22</p><img src="../../static/img/logo.png" th:src="@{/img/logo.png}"></div>
+        
+        
+        <div id="rights"><p>©2021 Orto-MED</p><p>Design: Mikołaj Kalata</p></div>
+    </footer>
+    </div>
+</body>
+</html>

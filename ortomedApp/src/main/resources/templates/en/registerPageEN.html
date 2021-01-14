@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>ORTOMED | REGISTRATION</title>
+    <link rel="stylesheet" href="../../static/css/mainStyle.css" th:href="@{/css/mainStyle.css}" >
+    <link rel="stylesheet" href="../../static/css/forms.css" th:href="@{/css/forms.css}" >
+    <script src="../../static/js/jquery.js" th:src="@{/js/jquery.js}"></script>
+    <script src="../../static/js/registerPage.js" th:src="@{/js/registerPage.js}"></script>
+    <script src="../../static/js/registerValidation.js" th:src="@{/js/registerValidation.js}"></script>
+    <script src="../../static/js/visitNewPageEN.js" th:src="@{/js/visitNewPageEN.js}"></script>
+    <script>
+
+        //onload="noBack();"
+        // onpageshow="if (event.persisted) noBack();" onunload=""}
+    </script>
+<!--    <SCRIPT type="text/javascript">-->
+<!--        window.history.forward();-->
+<!--        function noBack() { window.history.forward(); }-->
+<!--</SCRIPT>-->
+</head>
+
+<body>
+<div class="container">
+
+    <header>
+    
+    <div id="lang"><a href="/"><img src="../../static/img/pol.png" th:src="@{/img/pol.png}"></a><a href="/en"><img src="../../static/img/eng.png" th:src="@{/img/eng.png}"></a></div>
+     <a id="logo" href="/en"><img src="../../static/img/logo.png" th:src="@{/img/logo.png}"></a>
+         
+       
+       <nav>
+               <ul>
+            <li> <a href="/en/registration" title="Register">REGISTRATION</a></li>
+            <li><a href="/en/visit" id="visit" title="Check visit">VISIT</a></li>
+            <li> <a href="/en/about" title="Read about us">ABOUT US</a></li>
+            <li><a href="/en/contact" title="Contact us">CONTACT</a></li>
+            </ul>
+    </nav>
+    </header>
+    
+    <div class="slideshow2"><img src="../../static/img/registration2.jpg" th:src="@{/img/registration2.jpg}">
+        <p> Please complete the registration form </p>
+    </div>
+    
+<form id="form" th:action="@{/en/registration/success}" th:object="${patient}" method="post" class="form2" onsubmit="return validate()">
+    <div class="form2a">
+    
+        <label for="date">Date of Visit</label><input type="date" id="date" th:value="${patient.dateOfVisit}" th:field="*{dateOfVisit}" readonly="true">
+        <label for="time">Time</label><select id="time" th:field="*{timeOfVisit}">
+        <option th:each="hour : ${hours}" th:value="${hour}" th:text="${hour}"></option>
+    </select>
+    
+        <label for="doc">Doctor</label><input id="doc" type="text" th:value="${patient.doctor}" th:field="*{doctor}" readonly>
+        <input type="submit" id="submit" value="REJESTRUJ">
+    </div>
+    
+    <div class="form2b">
+    
+        <label for="name">Name</label><input type="text" id="name" th:value="${patient.firstName}" th:field="*{firstName}">
+    
+        <label for="lname">Surname</label> <input type="text" id="lname" th:value="${patient.lastName}" th:field="*{lastName}">
+    
+        <label for="pesel">PESEL*</label> <input type="text" id="pesel" th:value="${patient.pesel}" th:field="*{pesel}">
+        <p id="checkbox"><label for="foreigner">* Check the box, only if you are the foreigner.</label>
+        <input type="checkbox" id="foreigner" style="cursor: pointer"></p>
+    
+        <label for="phnumber">Phone Number</label> <input  id="phnumber" type="text" th:value="${patient.phoneNumber}" th:field="*{phoneNumber}">
+    
+        <label for="mail">E-mail address</label> <input type="text" id="mail" th:value="${patient.email}" th:field="*{email}">
+    </div>
+    
+
+    <!--Patient wanted to change the visit-->
+    <div class="update" style="display: none">
+    <input type="text" id="id" th:value="${patient.id}" th:field="*{id}">
+    </div>
+    <!-------------------------------------->
+
+</form>
+<footer>
+        <div class="partners"><p>Our Partners</p><img  id="baltyk"src="../../static/img/baltyk.png" th:src="@{/img/baltyk.png}"> 
+            <img id="lechia" src="../../static/img/lechia.png" th:src="@{/img/lechia.png}">
+            <img src="../../static/img/lech.png" th:src="@{/img/lech.png}"> <img src="../../static/img/kif.png" th:src="@{/img/kif.png}"></div>
+        
+        
+        <div id="contact"><p> Contact:<br>ul. Bydgoska 5a St., 81-305 Gdynia<br>
+Tower's building, 1 floor<br> +48 791 50 53 22</p><img src="../../static/img/logo.png" th:src="@{/img/logo.png}"></div>
+        
+        
+        <div id="rights"><p>©2021 Orto-MED</p><p>Design: Mikołaj Kalata</p></div>
+    </footer>
+    </div>
+</body>
+</html>
