@@ -1,9 +1,10 @@
 $(function(){
     if($("#id").val() > 0) {
-        $("#update").text("Wypełnij poniższe pola, aby zmienić termin. Zmiana terminu możliwa jest najpóźniej na jeden dzień przed planowaną wizytą.");
+        $("#update").text("Fill in the fields below to change the date. Changing the date is possible no later than one day before the planned visit.\n");
     }
 
     var today = new Date(Date.now());
+    var yourDate;
     var dd = today.getDate();
     var mm = today.getMonth() + 1;
     var yyyy = today.getFullYear();
@@ -29,31 +30,29 @@ $(function(){
     date.setAttribute("min", min);
     date.setAttribute("max", max);
 
-    var yourYyyy = date.value.toString().substr(0, 4);
-    var yourMm = date.value.toString().substr(5, 2);
-    var yourDd = date.value.toString().substr(8, 2);
-    yourDate = new Date(yourYyyy, yourMm - 1, yourDd);
 
     date.addEventListener("change", function () {
         $("#submit").prop("disabled", false);
+
+        var yourYyyy = date.value.toString().substr(0, 4);
+        var yourMm = date.value.toString().substr(5, 2);
+        var yourDd = date.value.toString().substr(8, 2);
+        yourDate = new Date(yourYyyy, yourMm - 1, yourDd);
     })
 
 
     $("#form").on("submit", function () {
-
         if($("#doc").val() == null || $("#doc").val() == ""){
-            alert("Prosimy wybrać lekarza");
+            alert("Please,choose the doctor");
             return false;
         }
 
         if($("#date").val() == null || $("#date").val() == ""){
-            alert("Niepoprawna data");
+            alert("Invalid date");
             return false;
         }
-
         if(yourDate.getDay() == 0 || yourDate.getDay() == 6){
-            alert("Pracujemy tylko w dni robocze\n " +
-                "Prosimy wybrać tylko dni powszednie");
+            alert("Please, choose only weekdays");
             return false;
         }
 

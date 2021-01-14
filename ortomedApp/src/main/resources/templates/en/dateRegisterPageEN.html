@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="../../static/css/mainStyle.css" th:href="@{/css/mainStyle.css}" >
     <link rel="stylesheet" href="../../static/css/forms.css" th:href="@{/css/forms.css}" >
     <script src="../../static/js/jquery.js" th:src="@{/js/jquery.js}"></script>
-    <script src="../../static/js/dateRegisterPage.js" th:src="@{/js/dateRegisterPage.js}"></script>
-    <script src="../../static/js/visitNewPageEN.js" th:src="@{/js/visitNewPageEN.js}"></script>
+    <script src="../../static/js/en/dateRegisterPageEN.js" th:src="@{/js/en/dateRegisterPageEN.js}"></script>
+    <script src="../../static/js/en/visitNewPageEN.js" th:src="@{/js/en/visitNewPageEN.js}"></script>
     </head>
     
 <body>
@@ -39,7 +39,7 @@ Choose the day of your visit </label>
     <input type="date" th:field="*{dateOfVisit}" id="date">
  
     <label>Choose your doctor </label>
-    <select th:field="*{doctor}">
+    <select id="doc" th:field="*{doctor}">
         <option th:value="''" selected="true" disabled="disabled">----Choose your doctor----</option>
         <option th:value="'dr. Gargula'">dr. Gargula</option>
         <option th:value="'dr. Tarman'">dr. Tarman</option>
