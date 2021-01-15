@@ -285,9 +285,8 @@ footer img{
         #reason p{
             display: none;}
     
-        .partners{
-            display: block;
-            visibility: hidden;
+        .partners img{
+            display: none;
     }
     
     #map{

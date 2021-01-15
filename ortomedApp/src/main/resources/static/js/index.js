@@ -64,13 +64,12 @@ $(document).ready(function () {
     
     else{
         
-        setTimeout(function(){
-            $(".about").fadeIn(300).css("display", "flex");
-        }, 700);
+        
+        $(".about").fadeIn(300).css("display", "flex");
         
         setTimeout(function(){
         $("#reason p").slideDown().css("display", "flex");
-        }, 900);
+        }, 1200);
 
         setInterval(function () {
         $(".needhelp div a").toggleClass("blink");

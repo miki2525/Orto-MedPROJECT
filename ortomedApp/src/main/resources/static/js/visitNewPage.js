@@ -25,8 +25,8 @@ $(function () {
     $(".hamburger").toggleClass("change");
     $("ul").slideToggle("slow");
 })
-$(window).resize(function(){
-              if(window.innerWidth > 986){
+    var check = window.matchMedia("(max-width: 988)");
+              if(check.matches){
                   $("ul").show();
               }
         var className = $(".hamburger").attr("class");

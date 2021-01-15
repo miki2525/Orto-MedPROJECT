@@ -79,8 +79,8 @@ this.mailService = mailService;}
     ////zrobic walidacje po str frontu jak i backu
 //    if ok -> SuccessPage, else -> "Nie mozna zarejestrowac, sprobuj ponownie"
     ///sprawdzic czy podany mail dotyczy jednej osoby, jesli nie to
-//        mailService.sendMail(patient, true);
-//        mailService.sendMailPass(patient, true);
+        mailService.sendMail(patient, true);
+        mailService.sendMailPass(patient, true);
 
 //        if(patient.getPassword() == null) { ////      new || updated visit means new password
             Random random = new Random();
