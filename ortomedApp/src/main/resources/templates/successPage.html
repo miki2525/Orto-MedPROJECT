@@ -15,6 +15,7 @@
         }
     }
 </script>
+    <style> #id tr{color: red; font-weight: normal}</style>
 </head>
 
 <body>
@@ -41,7 +42,7 @@
             <p>Twoja rejestracja:</p>
             <table id="table">
                 <tr><th>Data konsultacji</th><th>Godzina</th><th>Lekarz</th></tr>
-                <tr><th th:text="${patient.dateOfVisit}"></th><th th:text="${patient.timeOfVisit}"></th><th th:text="${patient.doctor}"></th></tr>
+                <tr id="r2"><th th:text="${patient.dateOfVisit}"></th><th th:text="${patient.timeOfVisit}"></th><th th:text="${patient.doctor}"></th></tr>
             </table>
         </div>
         <footer>

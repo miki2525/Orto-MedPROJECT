@@ -110,39 +110,39 @@ this.mailService = mailService;}
 
         @GetMapping("/en/about")
         public String showAboutEN(){
-            return "/en/aboutPageEN";
+            return "aboutPageEN";
         }
 
         @GetMapping("/en/contact")
-        public String showContactEN(){ return "/en/contactPageEN";}
+        public String showContactEN(){ return "contactPageEN";}
 
         @GetMapping("/en/registration")
         public String showDateRegisterPageEN(Model model){
 
             Patient patient = new Patient();
             model.addAttribute("patient", patient);
-            return "/en/dateRegisterPageEN";
+            return "dateRegisterPageEN";
         }
 
         @PostMapping("/en/registration")
         public String showDateRegisterPageEN(@RequestBody Patient patient, Model model){
             model.addAttribute("patient", patient);
-            return "/en/dateRegisterPageEN";
+            return "dateRegisterPageEN";
         }
 
         @PostMapping("/en/registration/step2")
         public String showRegisterPageEN(@ModelAttribute Patient patient, Model model){
 
             if(patient.getDateOfVisit()==null || patient.getDoctor() == ""){
-                return "/en/dateRegisterPageEN";
+                return "dateRegisterPageEN";
             }
             model.addAttribute("patient", patient);
             List<String> hoursList = patientService.showFreeHours(patient.getDateOfVisit(), patient.getDoctor());
             if(hoursList.isEmpty()){
-                return "/en/noFreeHoursPageEN";
+                return "noFreeHoursPageEN";
             }
             model.addAttribute("hours", hoursList);
-            return "/en/registerPageEN";
+            return "registerPageEN";
         }
 
         @PostMapping("/en/registration/success")
@@ -150,7 +150,7 @@ this.mailService = mailService;}
 
             for (Patient tempPatient : patientService.showAll()){
                 if (patient.equals(tempPatient)){
-                    return "/en/errorPageEN";
+                    return "errorPageEN";
                 }
             }
             Random random = new Random();
@@ -165,13 +165,13 @@ this.mailService = mailService;}
 
             patientService.savePatient(patient);
             System.out.println(patient);
-            return "/en/successPageEN";
+            return "successPageEN";
 
         }
 
         @GetMapping("/en/visit")
         public String showVisitPageEN(){
-            return "/en/visitPageEN";
+            return "visitPageEN";
         }
 }
 
