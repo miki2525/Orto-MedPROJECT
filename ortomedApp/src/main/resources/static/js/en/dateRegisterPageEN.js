@@ -31,20 +31,19 @@ $(function(){
 
 
     date.addEventListener("change", function (e) {
-
-       /* var yourYyyy = date.value.toString().substr(0, 4);
-        var yourMm = date.value.toString().substr(5, 2);
-        var yourDd = date.value.toString().substr(8, 2);
-        yourDate = new Date(yourYyyy, yourMm - 1, yourDd);*/
+var yourDay = new Date(this.value).getDay();
+        if(yourDay == 0 || yourDay == 6){
+            e.preventDefault();
+            alert("Please, choose only weekdays");
+        }
+        else{
+            $("#submit").prop("disabled", false);
+        }
     })
 
 
     $("#form").on("submit", function () {
-        if($("#doc").val() == null || $("#doc").val() == ""){
-            alert("Please,choose the doctor");
-            return false;
-        }
-
+        
         if($("#date").val() == null || $("#date").val() == ""){
             alert("Invalid date");
             return false;

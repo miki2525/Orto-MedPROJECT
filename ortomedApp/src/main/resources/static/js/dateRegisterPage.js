@@ -31,7 +31,7 @@ $(function(){
 
 
 
-    date.addEventListener("change", function () {
+    date.addEventListener("change", function (e) {
         var yourDay = new Date(this.value).getDay();
         if(yourDay == 0 || yourDay == 6){
             e.preventDefault();
@@ -45,10 +45,6 @@ $(function(){
 
     $("#form").on("submit", function () {
 
-        if($("#doc").val() == null || $("#doc").val() == ""){
-            alert("Prosimy wybrać lekarza");
-            return false;
-        }
 
         if($("#date").val() == null || $("#date").val() == ""){
             alert("Niepoprawna data");
