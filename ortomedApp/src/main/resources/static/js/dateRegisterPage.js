@@ -29,13 +29,17 @@ $(function(){
     date.setAttribute("min", min);
     date.setAttribute("max", max);
 
-    var yourYyyy = date.value.toString().substr(0, 4);
-    var yourMm = date.value.toString().substr(5, 2);
-    var yourDd = date.value.toString().substr(8, 2);
-    yourDate = new Date(yourYyyy, yourMm - 1, yourDd);
+
 
     date.addEventListener("change", function () {
-        $("#submit").prop("disabled", false);
+        var yourDay = new Date(this.value).getDay();
+        if(yourDay == 0 || yourDay == 6){
+            e.preventDefault();
+            alert("Prosimy wybrać tylko dni robocze");
+        }
+        else{
+            $("#submit").prop("disabled", false);
+        }
     })
 
 
@@ -51,11 +55,6 @@ $(function(){
             return false;
         }
 
-        if(yourDate.getDay() == 0 || yourDate.getDay() == 6){
-            alert("Pracujemy tylko w dni robocze\n " +
-                "Prosimy wybrać tylko dni powszednie");
-            return false;
-        }
 
         return true;
 

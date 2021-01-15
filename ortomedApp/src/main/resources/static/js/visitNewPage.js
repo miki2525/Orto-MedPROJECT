@@ -17,5 +17,23 @@ $(function () {
         e.preventDefault();
         var visitPage = window.open("http://localhost:8080/visit", "", "width=800, height=600");
     })
+    
+    
+    
+    
+    $(".hamburger").on("click", function(){
+    $(".hamburger").toggleClass("change");
+    $("ul").slideToggle("slow");
+})
+$(window).resize(function(){
+              if(window.innerWidth > 986){
+                  $("ul").show();
+              }
+        var className = $(".hamburger").attr("class");
+    if(window.innerWidth <= 986 && className == "hamburger"){
+                  $("ul").hide();
+                              
+    }
+})  
 
 });

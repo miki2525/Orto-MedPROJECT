@@ -185,9 +185,10 @@ h3{
 }
 
 .needhelp div{
+    
     background-color: powderblue;
-    margin-left: 500px;
-    margin-right: 500px;
+    margin-left: 290px;
+    width: 50%;
 }
 
 .needhelp div a{
@@ -253,4 +254,166 @@ footer img{
 }
 
 
+@media only screen and (max-width: 1225px){
+    li a:hover{
+        transform: scale(1.1);
+    }
+}
+@media only screen and (max-width: 1080px){
 
+    
+    .about img{
+        width: 50%;
+    }
+    .needhelp div{
+    margin-left: 200px;
+}
+    ul li a{
+        display: block;
+    }
+    li a:hover{
+        transform: scale(1);
+    }
+}
+@media only screen and (max-width: 987px){
+.slideshow img{
+        display: n;
+    }
+}
+
+@media only screen and (max-width: 987px){
+
+    .hamburger{
+        display: inline-block;
+        cursor: pointer;
+    }
+    
+    .top, .middle, .bottom {
+  width: 40px;
+  height: 7px;
+  background-color: red;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+    
+    .change .top {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+    .change .middle {opacity: 0;}
+
+    .change .bottom {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -8px);
+    }
+    
+    ul{
+        display: none;
+        padding: 0;
+    }
+    li{
+        background-color: powderblue;
+        width: 100%;
+        text-align: center;
+    }
+    ul li a{
+        display: block;
+        text-decoration: underline;
+        width: 100%;
+    }
+    .slideshow img{
+        display: none;
+    }
+}
+@media only screen and (max-width: 780px){
+    .about{
+        display: inline;
+        column-count: 1;
+    }
+    .about img{
+        display: none;
+    }
+    
+    #reason h5{
+        display: none;
+    }
+        
+    #map{
+        display: none;
+    }
+    
+        .needhelp div{
+    margin-left: 100px;
+            margin-right: 100px;
+    }
+    .needhelp div a{
+            font-size: 125%;
+    }
+}
+@media only screen and (max-width: 780px){
+    #reason div:nth-child(2){
+        display: none;
+    }
+    .wheretofindus{
+            padding: 10px;
+            margin: 10px;
+    }
+}
+@media only screen and (max-width: 650px){
+    #logo img{
+        width: 70%;
+    }
+    
+    #about h1{
+       font-size: 30px;
+    }
+    #about{
+        display: block;
+        width: 50%;
+    }
+    #about div{
+        text-align: center;
+        margin: 0;
+
+    }
+    
+    #contact img{
+        display: none;
+    }
+    
+    .reason h2{
+        font-size: 30px;
+    }
+    
+    .wheretofindus {
+        text-align: center;
+    }
+    
+    .wheretofindus h3{
+        font-size: 30px;
+        text-align: center;
+    }
+    
+    .needhelp p{
+        font-size: 30px;
+    }
+}
+    @media only screen and (max-width: 540px){
+        .needhelp div {
+            margin-left: 0;
+    }
+        .needhelp div a{
+            font-size: 80%;
+    }
+        #baltyk{
+             width: 40%;
+        }
+        
+        #lechia{
+             width: 40%;
+        }
+        .partners img{
+            width: 50%;
+        }
+}
