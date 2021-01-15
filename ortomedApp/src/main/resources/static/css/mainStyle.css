@@ -279,7 +279,16 @@ footer img{
 
 @media only screen and (max-width: 987px){
 
-
+    .about{
+        display: flex;
+    }
+        #reason p{
+            display: flex;}
+    
+        .partners{
+            display: block;
+    }
+    
     #map{
         width: 55%;
     }

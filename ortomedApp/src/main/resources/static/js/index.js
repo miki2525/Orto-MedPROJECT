@@ -68,6 +68,12 @@ $(document).ready(function () {
         setInterval(function () {
         $(".needhelp div a").toggleClass("blink");
     }, 1200);
+                    for (let 0 = 1; i < 4; i++){
+                setTimeout(function () {
+                    $(".partners img").eq(i).fadeIn(1000);
+                }, 700 * i);
+            }
+        
         
     }
     }
