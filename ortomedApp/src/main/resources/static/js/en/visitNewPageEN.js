@@ -15,7 +15,7 @@ $(function () {
 
     $("#visit").on("click", function (e) {
         e.preventDefault();
-        var visitPage = window.open("http://localhost:8080/en/visit", "", "width=800, height=600");
+        var visitPage = window.open("https://ortomed.herokuapp.com/en/visit", "", "width=800, height=600");
     })
 
     $(".hamburger").on("click", function(){

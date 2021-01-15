@@ -97,7 +97,79 @@ this.mailService = mailService;}
     public String showVisitPage(){
     return "visitPage";
     }
+    /////////////////////////
+    ///////////////////////////
+    //////////////////////////
+
+        @GetMapping("/en")
+        public String showMainPageEN(){
+            return "/en/indexEN";
+        }
+
+        @GetMapping("/en/about")
+        public String showAboutEN(){
+            return "/en/aboutPageEN";
+        }
+
+        @GetMapping("/en/contact")
+        public String showContactEN(){ return "/en/contactPageEN";}
+
+        @GetMapping("/en/registration")
+        public String showDateRegisterPageEN(Model model){
+
+            Patient patient = new Patient();
+            model.addAttribute("patient", patient);
+            return "/en/dateRegisterPageEN";
+        }
+
+        @PostMapping("/en/registration")
+        public String showDateRegisterPageEN(@RequestBody Patient patient, Model model){
+            model.addAttribute("patient", patient);
+            return "/en/dateRegisterPageEN";
+        }
+
+        @PostMapping("/en/registration/step2")
+        public String showRegisterPageEN(@ModelAttribute Patient patient, Model model){
+
+            if(patient.getDateOfVisit()==null || patient.getDoctor() == ""){
+                return "/en/dateRegisterPageEN";
+            }
+            model.addAttribute("patient", patient);
+            List<String> hoursList = patientService.showFreeHours(patient.getDateOfVisit(), patient.getDoctor());
+            if(hoursList.isEmpty()){
+                return "/en/noFreeHoursPageEN";
+            }
+            model.addAttribute("hours", hoursList);
+            return "/en/registerPageEN";
+        }
+
+        @PostMapping("/en/registration/success")
+        public String showSuccessPageEN(@ModelAttribute Patient patient) throws MessagingException {
+
+            for (Patient tempPatient : patientService.showAll()){
+                if (patient.equals(tempPatient)){
+                    return "/en/errorPageEN";
+                }
+            }
+
+            mailService.sendMail(patient, true);
+            mailService.sendMailPass(patient, true);
 
 
+            Random random = new Random();
+            int generateNumber = random.nextInt((1000000 - 100000 + 1) + 100000);
+            patient.setPassword(generateNumber);
+            //}
+            patientService.savePatient(patient);
+            System.out.println(patient);
+            return "/en/successPageEN";
+
+        }
+
+        @GetMapping("/en/visit")
+        public String showVisitPageEN(){
+            return "/en/visitPageEN";
+        }
 }
+
 
