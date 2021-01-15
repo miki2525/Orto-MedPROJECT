@@ -63,15 +63,23 @@ $(document).ready(function () {
     }
     
     else{
-        $(".about").fadeIn(300).css("display", "flex");
+        
+        setTimeout(function(){
+            $(".about").fadeIn(300).css("display", "flex");
+        }, 700);
+        
+        setTimeout(function(){
         $("#reason p").slideDown().css("display", "flex");
+        }, 900);
+
         setInterval(function () {
         $(".needhelp div a").toggleClass("blink");
     }, 1200);
-                    for (let i = 1; i < 4; i++){
-                setTimeout(function () {
-                    $(".partners img").eq(i).fadeIn(1000);
-                }, 700 * i);
+        
+        for (let i = 1; i < 4; i++){
+            setTimeout(function () {
+            $(".partners img").eq(i).fadeIn(1000);
+            }, 700 * i);
             }
         
         

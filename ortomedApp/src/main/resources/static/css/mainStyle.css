@@ -286,7 +286,8 @@ footer img{
             display: none;}
     
         .partners{
-            display: none;
+            display: block;
+            visibility: hidden;
     }
     
     #map{
