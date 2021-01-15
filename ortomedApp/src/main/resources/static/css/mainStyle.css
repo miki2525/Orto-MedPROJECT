@@ -280,10 +280,10 @@ footer img{
 @media only screen and (max-width: 987px){
 
     .about{
-        display: block;
+        display: flex;
     }
         #reason p{
-            display: block;}
+            display: flex;}
     
         .partners{
             display: block;

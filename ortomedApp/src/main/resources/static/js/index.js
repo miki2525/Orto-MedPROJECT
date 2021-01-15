@@ -15,7 +15,7 @@ $(document).ready(function () {
     
     
     function showContent(){
-    if(window.innerWidth > 987){
+    if(window.innerWidth > 986){
        
         $(".about").css("display", "none");
         $("#reason p").css("display", "none");
@@ -63,7 +63,8 @@ $(document).ready(function () {
     }
     
     else{
-
+        $(".about").fadeIn(300).css("display", "flex");
+        $("#reason p").slideDown().css("display", "flex");
         setInterval(function () {
         $(".needhelp div a").toggleClass("blink");
     }, 1200);
