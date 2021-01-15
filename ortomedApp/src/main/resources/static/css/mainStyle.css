@@ -275,14 +275,21 @@ footer img{
         transform: scale(1);
     }
 }
+
+
 @media only screen and (max-width: 987px){
-.slideshow img{
-        display: n;
+
+    .about{
+        display: block;
     }
-}
+        #reason p{
+            display: block;}
+    
+        .partners{
+            display: flex;
 
-@media only screen and (max-width: 987px){
-
+    }
+    
     .hamburger{
         display: inline-block;
         cursor: pointer;

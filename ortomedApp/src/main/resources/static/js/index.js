@@ -4,7 +4,7 @@ $(document).ready(function () {
     showContent();
    
     
-    var showView = window.matchMedia("(min-width: 987px)");
+    var showView = window.matchMedia("(min-width: 987)");
     showView.addListener(function(){
         if(showView.matches){
             showContent()
@@ -61,6 +61,9 @@ $(document).ready(function () {
     }
     
     else{
+                $(".about").css("display", "block");
+        $("#reason p").css("display", "block");
+        $(".partners img").css("display", "block");
         $(".slideshow").css("display", "none");
         $("#map").addClass("slide");
     }
