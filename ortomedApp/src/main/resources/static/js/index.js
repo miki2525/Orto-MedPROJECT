@@ -65,9 +65,9 @@ $(document).ready(function () {
     else{
         $(".about").fadeIn(300).css("display", "flex");
         $("#reason p").slideDown().css("display", "flex");
-//        setInterval(function () {
-//        $(".needhelp div a").toggleClass("blink");
-//    }, 1200);
+        setInterval(function () {
+        $(".needhelp div a").toggleClass("blink");
+    }, 1200);
                     for (let i = 1; i < 4; i++){
                 setTimeout(function () {
                     $(".partners img").eq(i).fadeIn(1000);
