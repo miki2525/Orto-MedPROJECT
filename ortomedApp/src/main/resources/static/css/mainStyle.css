@@ -289,7 +289,7 @@ footer img{
             display: none;
     }
     
-    #map{
+    #map.slide{
         width: 55%;
     }
 

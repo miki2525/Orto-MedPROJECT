@@ -70,15 +70,17 @@ $(document).ready(function () {
         setTimeout(function(){
         $("#reason p").slideDown().css("display", "flex");
         }, 1200);
+        
+        $("#map").addClass("slide");
 
         setInterval(function () {
         $(".needhelp div a").toggleClass("blink");
     }, 1200);
         
-        for (let i = 1; i < 4; i++){
+        for (let i = 0; i < 4; i++){
             setTimeout(function () {
             $(".partners img").eq(i).fadeIn(1000);
-            }, 700 * i);
+            }, 900 * i);
             }
         
         

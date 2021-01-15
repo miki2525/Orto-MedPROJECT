@@ -25,15 +25,16 @@ $(function () {
     $(".hamburger").toggleClass("change");
     $("ul").slideToggle("slow");
 })
-    var check = window.matchMedia("(max-width: 988)");
-              if(check.matches){
+var check = window.matchMedia("(min-width: 987)");
+    var className = $(".hamburger").attr("class");    
+            if(check.matches){
                   $("ul").show();
               }
-        var className = $(".hamburger").attr("class");
-    if(window.innerWidth <= 986 && className == "hamburger"){
+        
+    else if(className == "hamburger"){
                   $("ul").hide();
                               
     }
-})  
+  
 
 });
