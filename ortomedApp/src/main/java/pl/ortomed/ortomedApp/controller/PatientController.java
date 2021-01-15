@@ -9,7 +9,6 @@ import pl.ortomed.ortomedApp.service.PatientService;
 
 import javax.mail.MessagingException;
 import java.util.List;
-import java.util.Optional;
 import java.util.Random;
 
 @Controller
@@ -79,14 +78,17 @@ this.mailService = mailService;}
     ////zrobic walidacje po str frontu jak i backu
 //    if ok -> SuccessPage, else -> "Nie mozna zarejestrowac, sprobuj ponownie"
     ///sprawdzic czy podany mail dotyczy jednej osoby, jesli nie to
+
+    //        if(patient.getPassword() == null) { ////      new || updated visit means new password
+    Random random = new Random();
+    int generateNumber = random.nextInt((1000000 - 100000 + 1) + 100000);
+    patient.setPassword(generateNumber);
+    //}
+
         mailService.sendMail(patient, true);
         mailService.sendMailPass(patient, true);
 
-//        if(patient.getPassword() == null) { ////      new || updated visit means new password
-            Random random = new Random();
-            int generateNumber = random.nextInt((1000000 - 100000 + 1) + 100000);
-            patient.setPassword(generateNumber);
-        //}
+
         patientService.savePatient(patient);
         System.out.println(patient);
         return "successPage";
@@ -103,7 +105,7 @@ this.mailService = mailService;}
 
         @GetMapping("/en")
         public String showMainPageEN(){
-            return "/en/indexEN";
+            return "indexEN";
         }
 
         @GetMapping("/en/about")
@@ -151,15 +153,16 @@ this.mailService = mailService;}
                     return "/en/errorPageEN";
                 }
             }
+            Random random = new Random();
+            int generateNumber = random.nextInt((1000000 - 100000 + 1) + 100000);
+            patient.setPassword(generateNumber);
+
 
             mailService.sendMail(patient, true);
             mailService.sendMailPass(patient, true);
 
 
-            Random random = new Random();
-            int generateNumber = random.nextInt((1000000 - 100000 + 1) + 100000);
-            patient.setPassword(generateNumber);
-            //}
+
             patientService.savePatient(patient);
             System.out.println(patient);
             return "/en/successPageEN";
