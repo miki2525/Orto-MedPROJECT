@@ -15,7 +15,7 @@ $(document).ready(function () {
     
     
     function showContent(){
-    if(window.innerWidth > 986){
+    if(window.innerWidth > 987){
        
         $(".about").css("display", "none");
         $("#reason p").css("display", "none");
