@@ -286,10 +286,12 @@ footer img{
             display: block;}
     
         .partners{
-            display: flex;
-
+            display: block;
     }
     
+    #map{
+        width: 55%;
+    }
 
     .hamburger{
         display: inline-block;
