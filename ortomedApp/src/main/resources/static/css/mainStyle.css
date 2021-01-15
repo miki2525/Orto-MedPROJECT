@@ -276,13 +276,6 @@ footer img{
         transform: scale(1);
     }
 }
-<<<<<<< HEAD
-
-@media only screen and (max-width: 987px){
-
-
-=======
-
 
 @media only screen and (max-width: 987px){
 
@@ -297,7 +290,7 @@ footer img{
 
     }
     
->>>>>>> prototype
+
     .hamburger{
         display: inline-block;
         cursor: pointer;
