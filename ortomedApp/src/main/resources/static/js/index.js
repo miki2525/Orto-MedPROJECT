@@ -4,7 +4,7 @@ $(document).ready(function () {
     showContent();
    
     
-    var showView = window.matchMedia("(min-width: 987px)");
+    var showView = window.matchMedia("(min-width: 1000px)");
     showView.addListener(function(){
         if(showView.matches){
             showContent()
@@ -13,7 +13,7 @@ $(document).ready(function () {
     
     
     function showContent(){
-    if(window.innerWidth > 986){
+    if(window.innerWidth > 1000){
        
         $(".about").css("display", "none");
         $("#reason p").css("display", "none");
@@ -43,7 +43,7 @@ $(document).ready(function () {
         if (posY >= 300){
             $(".about").fadeIn(300).css("display", "flex");
         }
-        if(posY >= 1050){
+        if(posY >= 1000){
             $("#reason p").slideDown().css("display", "flex");
         }
         if(posY >= 1200){

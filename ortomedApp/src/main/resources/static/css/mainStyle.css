@@ -134,6 +134,7 @@ h5{
 }
 
 #reason p{
+
     border-top: dashed 1px;
     border-bottom: dashed 1px;
     margin-right: 100px;
@@ -275,13 +276,9 @@ footer img{
         transform: scale(1);
     }
 }
-@media only screen and (max-width: 987px){
-.slideshow img{
-        display: n;
-    }
-}
 
 @media only screen and (max-width: 987px){
+
 
     .hamburger{
         display: inline-block;
