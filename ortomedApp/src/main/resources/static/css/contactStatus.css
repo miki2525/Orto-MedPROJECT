@@ -16,14 +16,17 @@
     margin: 0 80px 50px;
 }
 
+#pimg{
+    text-align: left;
+    margin: 0px 100px;
+    
+}
 
 #contactPhoto{
     border: 4px solid lightseagreen;
     border-radius: 10px;
-    top: 50%;
-    left: 55%;
-    position: absolute;
-    width: 20%;
+    width: 40%;
+
 }
 
 #status{
