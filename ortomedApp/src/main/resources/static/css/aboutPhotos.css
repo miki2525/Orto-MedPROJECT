@@ -4,6 +4,11 @@
     border: 10px solid lightseagreen;
     border-radius: 10px;
 }
+@media only screen and (max-width: 987px){
+    .slideshow {
+        border: 0;
+    }
+    }
 
 .content p{
     margin: 0 80px 50px;

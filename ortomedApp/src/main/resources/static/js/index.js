@@ -16,7 +16,7 @@ $(document).ready(function () {
     
     function showContent(){
     if(window.innerWidth > 986){
-       
+        
         $(".about").css("display", "none");
         $("#reason p").css("display", "none");
         $(".partners img").css("display", "none");
@@ -64,12 +64,12 @@ $(document).ready(function () {
     
     else{
         
-        
+        setTimeout(function(){
         $(".about").fadeIn(300).css("display", "flex");
-        
+        }, 1100);
         setTimeout(function(){
         $("#reason p").slideDown().css("display", "flex");
-        }, 1200);
+        }, 1500);
         
         $("#map").addClass("slide");
 
@@ -80,7 +80,7 @@ $(document).ready(function () {
         for (let i = 0; i < 4; i++){
             setTimeout(function () {
             $(".partners img").eq(i).fadeIn(1000);
-            }, 900 * i);
+            }, 1500 * i);
             }
         
         

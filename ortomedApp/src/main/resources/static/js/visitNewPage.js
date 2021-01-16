@@ -29,10 +29,13 @@ $(function () {
 $(window).resize(function(){
               if(window.innerWidth > 986){
                   $("ul").show();
+                   
               }
         var className = $(".hamburger").attr("class");
     if(window.innerWidth <= 986 && className == "hamburger"){
                   $("ul").hide();
+                         
+
                               
     }
 })  

@@ -18,6 +18,9 @@ $(function () {
         var visitPage = window.open("https://ortomed.herokuapp.com/en/visit", "", "width=800, height=600");
     })
 
+    
+    
+    
     $(".hamburger").on("click", function(){
     $(".hamburger").toggleClass("change");
     $("ul").slideToggle("slow");
