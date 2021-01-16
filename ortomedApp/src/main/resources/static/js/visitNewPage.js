@@ -14,9 +14,11 @@ $(function () {
     });
 
     $("#visit").on("click", function (e) {
-        e.preventDefault();
-        var visitPage = window.open("https://ortomed.herokuapp.com/visit", "", "width=800, height=600");
-    })
+        if(window.innerWidth > 987) {
+            e.preventDefault();
+            var visitPage = window.open("https://ortomed.herokuapp.com/visit", "", "width=800, height=600");
+        }
+        })
     
     
     
