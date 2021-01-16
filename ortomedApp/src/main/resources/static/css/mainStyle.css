@@ -133,12 +133,20 @@ h5{
     font-size: 35px;
 }
 
+
 #reason p{
 
     border-top: dashed 1px;
     border-bottom: dashed 1px;
-    margin-right: 100px;
-    margin-left: 100px;
+    
+}
+
+#reason div:nth-child(1) p{
+    margin-right: 50px;
+}
+
+#reason div:nth-child(2) p{
+    margin-left: 20px;
 }
 
 
@@ -336,7 +344,15 @@ footer img{
         display: none;
 }
     }
+
+@media only screen and (max-width: 840px){
+    
+    #reason {
+        column-count: 2;
+    }
+
 }
+    
 @media only screen and (max-width: 780px){
     .about{
         display: inline;
