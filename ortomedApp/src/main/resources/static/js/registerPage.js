@@ -27,6 +27,6 @@ $(function () {
                 inputWithValue++;
             }
         }
-        (inputWithValue == inputs.length) ? $("#submit").prop("disabled", false) : $("#submit").prop("disabled", true);
+        (inputWithValue > 1) ? $("#submit").prop("disabled", false) : $("#submit").prop("disabled", true);
     }
 });

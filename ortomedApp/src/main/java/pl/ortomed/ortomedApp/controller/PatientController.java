@@ -79,7 +79,7 @@ this.mailService = mailService;}
 //    if ok -> SuccessPage, else -> "Nie mozna zarejestrowac, sprobuj ponownie"
     ///sprawdzic czy podany mail dotyczy jednej osoby, jesli nie to
 
-    //        if(patient.getPassword() == null) { ////      new || updated visit means new password
+    //              new || updated visit means new password
     Random random = new Random();
     int generateNumber = random.nextInt((1000000 - 100000 + 1) + 100000);
     patient.setPassword(generateNumber);
@@ -99,8 +99,9 @@ this.mailService = mailService;}
     public String showVisitPage(){
     return "visitPage";
     }
+
     /////////////////////////
-    ///////////////////////////
+    /////////////////////////// ENG VERSION
     //////////////////////////
 
         @GetMapping("/en")

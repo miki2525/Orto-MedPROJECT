@@ -13,6 +13,7 @@ import javax.servlet.annotation.ServletSecurity;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 ////////////////////////////////////////////////////////////////REST////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////REST////////////////////////////////////////////////////////////
@@ -22,18 +23,16 @@ import java.util.List;
 @RestController
 public class PatientRestController {
 
-
-
     PatientService patientService;
     PatientController patientController;
 
-    public PatientRestController(PatientService patientService, PatientController patientController){
+    public PatientRestController(PatientService patientService, PatientController patientController) {
         this.patientService = patientService;
-        this.patientController = patientController;}
+        this.patientController = patientController;
+    }
 
     @GetMapping
-    public ResponseEntity<List<Patient>> showPatient(){
-
+    public ResponseEntity<List<Patient>> showPatient() {
         return ResponseEntity.ok(patientService.showAll());
     }
 
@@ -47,52 +46,52 @@ public class PatientRestController {
     }
 
     @GetMapping("/dodaj")
-    public ResponseEntity<String> Dodaj(){
+    public ResponseEntity<String> Dodaj() {
         Patient patient1 = new Patient();
-//        Patient patient2 = new Patient();
-//        Patient patient3 = new Patient();
         patient1.setFirstName("Miko");
         patient1.setEmail("mikolaj_miki05@o2.pl");
         patient1.setPassword(1);
-        patient1.setDateOfVisit(LocalDate.of(2020, 12, 31));
+        patient1.setDateOfVisit(LocalDate.now().plusDays(3));
         patient1.setLastName("Lajk");
         patient1.setDoctor("dr. Gargula");
         patient1.setPesel(88122121875L);
         patient1.setPhoneNumber(505601232);
         patient1.setTimeOfVisit("10:00");
-/*        patient2.setFirstName("Miko");
-        patient2.setEmail("walka@o2.pl");
-        patient2.setPassword(1);
-        patient2.setDateOfVisit(LocalDate.now());
-        patient1.setTimeOfVisit("18:30");
-        patient3.setFirstName("Miko");
-        patient3.setEmail("walka@o2.pl");
-        patient3.setPassword(1);
-        patient3.setDateOfVisit(LocalDate.now());
-        patient3.setTimeOfVisit("11:00");
-        */patientService.savePatient(patient1);
-//        patientService.savePatient(patient2);
-//        patientService.savePatient(patient3);
+        patientService.savePatient(patient1);
+
         return ResponseEntity.ok("Dodalem");
     }
+
     @PostMapping("/showVisit")
-        public ResponseEntity<Patient> showVisit(@RequestParam ("email") String email, @RequestParam ("pass") Integer pass){
+    public ResponseEntity<Patient> showVisit(@RequestParam("email") String email, @RequestParam("pass") Integer pass) {
         Patient visit = new Patient();
-        for (Patient tempPatient : patientService.showAll()){
-            if (tempPatient.getEmail().equals(email)){
-                if (tempPatient.getPassword().equals(pass)){
+        for (Patient tempPatient : patientService.showAll()) {
+            if (tempPatient.getEmail().equals(email)) {
+                if (tempPatient.getPassword().equals(pass)) {
                     visit = tempPatient;
                 }
             }
         }
         return ResponseEntity.ok(visit);
-        }
+    }
 
-        @PostMapping("/delete")
-        ResponseEntity<Boolean> cancelVisit(@RequestBody Patient patient){
+    @PostMapping("/delete")
+    ResponseEntity<Boolean> cancelVisit(@RequestBody Patient patient) {
         return ResponseEntity.ok(patientService.deletePatient(patient));
+    }
+
+    @PostMapping("/delete/{id}")
+    ResponseEntity<Boolean> deleteById(@RequestParam Long id) {
+
+        if (patientService.findById(id).isPresent()) {
+            Optional<Patient> patient = patientService.findById(id);
+            return ResponseEntity.ok(patientService.deletePatient(patient.get()));
+        } else {
+            return ResponseEntity.notFound().build();
         }
     }
+}
+
 ////////////////////////////////////////////////////////////////REST////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////REST////////////////////////////////////////////////////////////
 

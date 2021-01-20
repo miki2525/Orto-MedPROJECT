@@ -7,8 +7,6 @@ import pl.ortomed.ortomedApp.repository.PatientRepository;
 
 import javax.mail.MessagingException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.*;
 
 @Service
