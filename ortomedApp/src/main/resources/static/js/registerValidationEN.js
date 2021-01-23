@@ -11,7 +11,7 @@ window.onload = function () {
 function validate() {
 
     var errorMsg = "";
-    const regexLetters = /^[a-zA-Z]+$/;
+    const regexLetters = /^([a-zżźćńółęąśA-ZŻŹĆĄŚĘŁÓŃ -]){2,30}$/;
     const regexPhone = /^([0-9]{9})$/;
     const regexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
