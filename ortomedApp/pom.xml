@@ -71,6 +71,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.icegreen</groupId>
+			<artifactId>greenmail-spring</artifactId>
+			<scope>test</scope>
+		</dependency>
 
 	</dependencies>
 

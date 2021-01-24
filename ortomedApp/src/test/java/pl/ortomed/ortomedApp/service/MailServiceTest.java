@@ -1,0 +1,84 @@
+package pl.ortomed.ortomedApp.service;
+
+import com.icegreen.greenmail.junit.GreenMailRule;
+import com.icegreen.greenmail.util.GreenMail;
+import com.icegreen.greenmail.util.ServerSetup;
+import com.icegreen.greenmail.util.ServerSetupTest;
+import com.sun.mail.imap.protocol.MailboxInfo;
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import pl.ortomed.ortomedApp.model.Patient;
+import pl.ortomed.ortomedApp.repository.PatientRepository;
+
+import static org.mockito.Mockito.*;
+import static org.assertj.core.api.Assertions.as;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.internet.MimeMessage;
+import java.time.LocalDate;
+
+@ExtendWith(MockitoExtension.class)
+public class MailServiceTest {
+
+    @Mock
+    private JavaMailSender javaMailSender;
+
+    @InjectMocks
+    private MailService mailService;
+
+    private Patient patient;
+    private MimeMessage mimeMessage;
+
+    @BeforeEach
+            void setUp() {
+        patient = new Patient(LocalDate.now().plusDays(2), "dr. Tarman", "11:30", "test",
+                "test", 99080955104L, 505666123,
+                "testowymail@gmail.com", 1);
+        mimeMessage = new MimeMessage((Session) null);
+    }
+
+
+    @Test
+    void shouldSendMail() throws MessagingException {
+        //given
+        when(javaMailSender.createMimeMessage()).thenReturn(mimeMessage);
+        //when
+        mailService.sendMail(patient, true);
+        //then
+        verify(javaMailSender, times(1)).send(mimeMessage);
+    }
+
+
+    @Test
+    void shouldSendMailPass() throws MessagingException {
+        //given
+        when(javaMailSender.createMimeMessage()).thenReturn(mimeMessage);
+        //when
+        mailService.sendMailPass(patient, true);
+        //then
+        assertThat(mimeMessage.getRecipients(Message.RecipientType.TO)[0].toString()).isEqualTo("testowymail@gmail.com");
+    }
+
+
+    @Test
+    void shouldSendMailReminder() throws MessagingException{
+            //given
+            when(javaMailSender.createMimeMessage()).thenReturn(mimeMessage);
+            //when
+            mailService.sendMailReminder(patient, true);
+            //then
+            verify(javaMailSender, times(1)).send(mimeMessage);
+            assertThat(mimeMessage.getSubject()).isEqualTo("OrtoMED - Przypomnienie o zaplanowanej wizycie");
+        }
+    }

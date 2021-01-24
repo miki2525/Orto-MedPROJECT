@@ -53,6 +53,7 @@ public class MailService {
         mimeMessageHelper.setText(text, isHtmlContent);
         mimeMessageHelper.setReplyTo("noreply@OrtoMED.pl");
         javaMailSender.send(mimeMessage);
+        System.out.printf(mimeMessage.getSubject());
     }
 
     public void sendMailReminder(Patient patient, boolean isHtmlContent) throws MessagingException {
