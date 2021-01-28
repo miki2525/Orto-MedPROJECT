@@ -39,6 +39,7 @@ public class PatientService {
         return patientRepository.save(patient);
     }
 
+
     public Boolean deletePatient(Patient patient){
         patientRepository.delete(patient);
         return !patientRepository.findAll().contains(patient);
@@ -92,4 +93,7 @@ public class PatientService {
             return freeHoursList;
 
 }
+        public void clearAll(){
+        patientRepository.deleteAll();
+        }
 }

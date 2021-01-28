@@ -1,5 +1,6 @@
 package pl.ortomed.ortomedApp.controller;
 
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -72,18 +73,13 @@ this.mailService = mailService;}
             return "errorPage";
         }
     }
-      /*zrobic klase walidujaca zwracajaca bool if(!patient){
-        return "errorPage";
-    }*/
-    ////zrobic walidacje po str frontu jak i backu
-//    if ok -> SuccessPage, else -> "Nie mozna zarejestrowac, sprobuj ponownie"
-    ///sprawdzic czy podany mail dotyczy jednej osoby, jesli nie to
 
     //              new || updated visit means new password
     Random random = new Random();
     int generateNumber = random.nextInt((1000000 - 100000 + 1) + 100000);
     patient.setPassword(generateNumber);
     //}
+
 
         mailService.sendMail(patient, true);
         mailService.sendMailPass(patient, true);
