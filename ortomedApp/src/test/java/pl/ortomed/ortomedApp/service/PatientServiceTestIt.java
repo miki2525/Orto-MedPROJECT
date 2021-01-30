@@ -1,6 +1,7 @@
 package pl.ortomed.ortomedApp.service;
 
-import org.junit.Assert;
+import org.assertj.core.api.Assert;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,8 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 @SpringBootTest
 class PatientServiceTestIt {
@@ -91,11 +94,13 @@ class PatientServiceTestIt {
         //
         //
         try {
+
             patientService.sendMailReminder();
-            Assert.assertTrue(true);
+            assertTrue(true);
+
         }
         catch (Exception e){
-            Assert.fail(e.getMessage());
+            org.junit.jupiter.api.Assertions.fail(e.getMessage());
         }
     }
 

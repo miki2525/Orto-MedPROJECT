@@ -29,7 +29,7 @@ public class PatientService {
     public List<Patient> findByPesel(Long pesel){ //can be more than one visit per patient
             List list = new ArrayList();
         for (Patient tempPatient : patientRepository.findAll()){
-            if(tempPatient.getPesel() == pesel){
+            if(tempPatient.getPesel().equals(pesel)){
               list.add(tempPatient);
             }
         }
@@ -48,12 +48,26 @@ public class PatientService {
     @Scheduled(cron = "0 0 10 * * ?")   //check every day at 10AM
     public void sendMailReminder() throws MessagingException {
         for (Patient remindPatient : patientRepository.findAll()) {
-               if (remindPatient.getDateOfVisit().getDayOfMonth() - LocalDate.now().getDayOfMonth() == 3) { //remind 3 days before
+            if (remindPatient.getDateOfVisit().getDayOfMonth() - LocalDate.now().getDayOfMonth() == 3) { //remind 3 days before
+                mailService.sendMailReminder(remindPatient, true);
+            }
+            else if (remindPatient.getDateOfVisit().getDayOfMonth() - LocalDate.now().getDayOfMonth() == -29) {
+                mailService.sendMailReminder(remindPatient, true);
+            }
+            else if (remindPatient.getDateOfVisit().getDayOfMonth() - LocalDate.now().getDayOfMonth() == -28) {
+                mailService.sendMailReminder(remindPatient, true);
+            }
+            else if (remindPatient.getDateOfVisit().getDayOfMonth() - LocalDate.now().getDayOfMonth() == -27) {
+                mailService.sendMailReminder(remindPatient, true);
+            }
+            else if (remindPatient.getDateOfVisit().getDayOfMonth() - LocalDate.now().getDayOfMonth() == -26) {
+                mailService.sendMailReminder(remindPatient, true);
+            }
+            else if (remindPatient.getDateOfVisit().getDayOfMonth() - LocalDate.now().getDayOfMonth() == -25) {
                 mailService.sendMailReminder(remindPatient, true);
             }
         }
     }
-
     //free hours for visits depended on chosen day
     public List<String> showFreeHours(LocalDate currentDay, String doctor){
         List<String> freeHoursList = new ArrayList<>();

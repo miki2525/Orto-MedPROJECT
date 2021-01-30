@@ -1,5 +1,6 @@
 package pl.ortomed.ortomedApp.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sun.istack.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -167,8 +168,7 @@ public class Patient {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Patient patient = (Patient) o;
-        return Objects.equals(id, patient.id) &&
-                Objects.equals(dateOfVisit, patient.dateOfVisit) &&
+        return Objects.equals(dateOfVisit, patient.dateOfVisit) &&
                 Objects.equals(doctor, patient.doctor) &&
                 Objects.equals(timeOfVisit, patient.timeOfVisit) &&
                 Objects.equals(firstName, patient.firstName) &&

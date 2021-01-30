@@ -45,23 +45,6 @@ public class PatientRestController {
         }
     }
 
-    @GetMapping("/dodaj")
-    public ResponseEntity<String> Dodaj() {
-        Patient patient1 = new Patient();
-        patient1.setFirstName("Miko");
-        patient1.setEmail("mikolaj_miki05@o2.pl");
-        patient1.setPassword(1);
-        patient1.setDateOfVisit(LocalDate.now().plusDays(3));
-        patient1.setLastName("Lajk");
-        patient1.setDoctor("dr. Gargula");
-        patient1.setPesel(88122121875L);
-        patient1.setPhoneNumber(505601232);
-        patient1.setTimeOfVisit("10:00");
-        patientService.savePatient(patient1);
-
-        return ResponseEntity.ok("Dodalem");
-    }
-
     @PostMapping("/showVisit")
     public ResponseEntity<Patient> showVisit(@RequestParam("email") String email, @RequestParam("pass") Integer pass) {
         Patient visit = new Patient();
@@ -89,6 +72,23 @@ public class PatientRestController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/dodaj")
+    public ResponseEntity<String> Dodaj() {
+        Patient patient1 = new Patient();
+        patient1.setFirstName("Miko");
+        patient1.setEmail("mikolaj_miki05@o2.pl");
+        patient1.setPassword(1);
+        patient1.setDateOfVisit(LocalDate.now().plusDays(3));
+        patient1.setLastName("Lajk");
+        patient1.setDoctor("dr. Gargula");
+        patient1.setPesel(88122121875L);
+        patient1.setPhoneNumber(505601232);
+        patient1.setTimeOfVisit("10:00");
+        patientService.savePatient(patient1);
+
+        return ResponseEntity.ok("Dodalem");
     }
 }
 
