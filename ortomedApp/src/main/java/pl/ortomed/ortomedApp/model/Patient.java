@@ -175,8 +175,7 @@ public class Patient {
                 Objects.equals(lastName, patient.lastName) &&
                 Objects.equals(pesel, patient.pesel) &&
                 Objects.equals(phoneNumber, patient.phoneNumber) &&
-                Objects.equals(email, patient.email) &&
-                Objects.equals(password, patient.password);
+                Objects.equals(email, patient.email);
     }
 
     @Override

@@ -53,7 +53,7 @@ this.mailService = mailService;}
 @PostMapping("/registration/step2")
   public String showRegisterPage(@ModelAttribute Patient patient, Model model){
 
-        if(patient.getDateOfVisit()==null || patient.getDoctor() == ""){
+        if(patient.getDateOfVisit() == null || patient.getDoctor() == "" || patient.getDoctor() == null){
             return "dateRegisterPage";
         }
         model.addAttribute("patient", patient);
