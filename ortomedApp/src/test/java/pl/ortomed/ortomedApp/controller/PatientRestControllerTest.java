@@ -22,6 +22,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -55,7 +56,7 @@ class PatientRestControllerTest {
 
 
     @Test
-    void showPatient() throws Exception {
+    void shouldShowPatient() throws Exception {
         String listJSON = objectMapper.writeValueAsString(patientService.showAll());
         mockMvc.perform(get("/api")).
                 andDo(print()).
@@ -64,7 +65,7 @@ class PatientRestControllerTest {
     }
 
     @Test
-    void findByPesel() throws Exception {
+    void shouldFindByPesel() throws Exception {
         String listJSON = objectMapper.writeValueAsString(patientService.findByPesel(patientTest.getPesel()));
         mockMvc.perform(get("/api/{pesel}", 99080955104L))
                 .andDo(print())
@@ -73,20 +74,46 @@ class PatientRestControllerTest {
     }
 
     @Test
-    void notFindByPesel() throws Exception {
+    void shouldNotFindByPesel() throws Exception {
         mockMvc.perform(get("/api/{pesel}", 89080955104L))
                 .andExpect(status().isNotFound());
     }
 
     @Test
-    void showVisit() {
+    void shouldShowVisit() throws Exception {
+        mockMvc.perform(post("/api/showVisit")
+                .contentType("application/x-www-form-urlencoded")
+                .param("email", patientTest.getEmail())
+                .param("pass", patientTest.getPassword().toString()))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().string(objectMapper.writeValueAsString(patientTest)));
     }
 
     @Test
-    void cancelVisit() {
+    void shouldCancelVisit() throws Exception {
+        mockMvc.perform(post("/api/delete")
+                .contentType("application/json")
+                .content(objectMapper.writeValueAsString(patientTest)))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().string("true"));
     }
 
     @Test
-    void deleteById() {
+    void shouldDeleteById() throws Exception{
+        mockMvc.perform(post("/api/delete/{id}", 1L))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().string("true"));
     }
+
+    @Test
+    void shouldNotDeleteById() throws Exception{
+        mockMvc.perform(post("/api/delete/{id}", 2L))
+                .andDo(print())
+                .andExpect(status().isNotFound());
+    }
+
+
 }

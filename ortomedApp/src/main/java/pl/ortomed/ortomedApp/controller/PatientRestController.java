@@ -64,7 +64,7 @@ public class PatientRestController {
     }
 
     @PostMapping("/delete/{id}")
-    ResponseEntity<Boolean> deleteById(@RequestParam Long id) {
+    ResponseEntity<Boolean> deleteById(@PathVariable Long id) {
 
         if (patientService.findById(id).isPresent()) {
             Optional<Patient> patient = patientService.findById(id);
