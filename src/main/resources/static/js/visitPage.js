@@ -82,8 +82,11 @@ function changeVisit(event) {
                             $("body").html(xhttp.responseText);
                         }, 3000);
                     }*/
+                    if(window.opener != null){
+                        window.opener.$("body").html(xhttp.responseText);
+                        window.close();
+                    }
                     setTimeout(function () {
-                       // window.opener.$("body").html(xhttp.responseText);
                         $("body").html(xhttp.responseText);
                         $("#loading").hide();
                     }, 3000);
