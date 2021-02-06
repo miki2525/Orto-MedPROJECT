@@ -12,6 +12,8 @@ $(function(){
     
 var obj;
 document.getElementById("submit").addEventListener("click", showVisit);
+document.getElementById("delete").addEventListener("click", deleteVisit);
+document.getElementById("change").addEventListener("click", changeVisit);
 
 function showVisit() {
         var xhttp = new XMLHttpRequest();
@@ -21,17 +23,18 @@ function showVisit() {
             if (this.readyState == 4 && this.status == 200) {
                 obj = JSON.parse(this.responseText);
                 if (obj.id != null) {
+                    $("#error").slideUp("fast");
                     $("#fname").html(obj.firstName);
                     $("#lname").html(obj.lastName);
                     $("#date").html(obj.dateOfVisit);
                     $("#hour").html(obj.timeOfVisit);
                     $("#doc").html(obj.doctor);
-                    $("#tableplace").slideDown("slow");
+                    $("#table").slideDown("slow");
                     document.getElementById("delete").addEventListener("click", deleteVisit);
                     document.getElementById("change").addEventListener("click", changeVisit);
                 } else {
-                    $("#tableplace").slideDown("slow").html("\n" +
-                        "No results. Check the correctness of the data.")
+                    $("#table").slideUp("fast");
+                    $("#error").slideDown("slow");
                 }
             }
         }
@@ -44,14 +47,13 @@ function deleteVisit() {
 
     if (window.confirm("Are you sure you want to cancel your visit?")) {
         xhttp = new XMLHttpRequest();
-        xhttp.open("POST", "api/delete", true);
+        xhttp.open("POST", "/api/delete", true);
         xhttp.setRequestHeader("Content-Type", "application/json");
         xhttp.send(JSON.stringify(obj));
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 if (xhttp.responseText) {
-                    $("#table").remove();
-                    $("#tableplace").slideDown("slow").html("Your visit has been canceled");
+                    $("#table").slideDown("slow").html("Your visit has been canceled");
                 }
             }
         }
@@ -67,12 +69,21 @@ function changeVisit(event) {
             xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
-                    if (window.opener != null) {
+                    if (window.opener != null && !window.opener.closed) {
+
+                        /* DOES NOT WORKING ON HEROKU
                         setTimeout(function () {
-                            window.opener.parent.$("body").html(xhttp.responseText);
-                            window.parent.close();
+                            window.opener.$("body").html(xhttp.responseText);
+                            window.close();
                             $("#loading").hide();
                         }, 3000);
+                             */
+
+                        setTimeout(function () {
+                            $("body").html(xhttp.responseText);
+                            $("#loading").hide();
+                        }, 3000);
+
                     } else {
                         setTimeout(function () {
                             $("#loading").hide();
@@ -86,7 +97,7 @@ function changeVisit(event) {
                 }
 
             }
-            xhttp.open("POST", "/registration", true);
+            xhttp.open("POST", "/en/registration", true);
             xhttp.setRequestHeader("Content-Type", "application/json");
             xhttp.send(JSON.stringify(obj));
         }

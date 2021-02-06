@@ -13,16 +13,24 @@ $(function () {
 
     });
 
+/*  WON'T WORK ON HEROKU SERVER
+
     $("#visit").on("click", function (e) {
-         if(window.innerWidth > 987) {
+        if(window.innerWidth > 987) {
             e.preventDefault();
             var visitPage = window.open("https://ortomed.herokuapp.com/visit", "", "width=800, height=600");
          }
         })
-    
-    
-    
-    
+  */
+
+    $("#visit").on("click", function (e) {
+            e.preventDefault();
+            var visitPage = window.open("https://ortomed.herokuapp.com/visit");
+    })
+
+
+
+
     $(".hamburger").on("click", function(){
     $(".hamburger").toggleClass("change");
     $("ul").slideToggle("slow");

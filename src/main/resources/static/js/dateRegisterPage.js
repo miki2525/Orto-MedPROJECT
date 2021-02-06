@@ -31,10 +31,10 @@ $(function(){
 
 
 
-    date.addEventListener("change", function (e) {
+    date.addEventListener("change", function () {
         var yourDay = new Date(this.value).getDay();
         if(yourDay == 0 || yourDay == 6){
-            e.preventDefault();
+            $("#submit").prop("disabled", true);
             alert("Prosimy wybrać tylko dni robocze");
         }
         else{
