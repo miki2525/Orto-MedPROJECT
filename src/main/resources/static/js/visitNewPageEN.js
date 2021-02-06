@@ -18,7 +18,7 @@ $(function () {
     $("#visit").on("click", function (e) {
         if (window.innerWidth > 987) {
             e.preventDefault();
-            var visitPage = window.open("https://ortomed.herokuapp.com/visit");
+            var visitPage = window.open("https://ortomed.herokuapp.com/en/visit", "", "width=800, height=600");
         }
     })
 
