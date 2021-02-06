@@ -31,7 +31,7 @@ public class MailServiceTest {
     private MimeMessage mimeMessage;
 
     @BeforeEach
-            void setUp() {
+    void setUp() {
         patientTest = new Patient(LocalDate.now().plusDays(2), "dr. Gargula", "11:30", "test",
                 "test", 99080955104L, 505666123,
                 "testowymail@gmail.com", 1);
@@ -63,12 +63,12 @@ public class MailServiceTest {
 
     @Test
     void shouldSendMailReminder() throws MessagingException{
-            //given
-            when(javaMailSender.createMimeMessage()).thenReturn(mimeMessage);
-            //when
-            mailService.sendMailReminder(patientTest, true);
-            //then
-            verify(javaMailSender, times(1)).send(mimeMessage);
-            assertThat(mimeMessage.getSubject()).isEqualTo("OrtoMED - Przypomnienie o zaplanowanej wizycie");
-        }
+        //given
+        when(javaMailSender.createMimeMessage()).thenReturn(mimeMessage);
+        //when
+        mailService.sendMailReminder(patientTest, true);
+        //then
+        verify(javaMailSender, times(1)).send(mimeMessage);
+        assertThat(mimeMessage.getSubject()).isEqualTo("OrtoMED - Przypomnienie o zaplanowanej wizycie");
     }
+}
