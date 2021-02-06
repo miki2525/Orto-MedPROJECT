@@ -29,11 +29,10 @@ function showVisit() {
                     $("#date").html(obj.dateOfVisit);
                     $("#hour").html(obj.timeOfVisit);
                     $("#doc").html(obj.doctor);
-                    $("#tableplace").slideDown("slow");
-                    document.getElementById("delete").addEventListener("click", deleteVisit);
-                    document.getElementById("change").addEventListener("click", changeVisit);
+                    $("#table").slideDown("slow");
+
                 } else {
-                    $("#tableplace").slideUp("fast");
+                    $("#table").slideUp("fast");
                     $("#error").slideDown("slow");
                 }
             }

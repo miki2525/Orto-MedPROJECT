@@ -12,6 +12,8 @@ $(function(){
     
 var obj;
 document.getElementById("submit").addEventListener("click", showVisit);
+document.getElementById("delete").addEventListener("click", deleteVisit);
+document.getElementById("change").addEventListener("click", changeVisit);
 
 function showVisit() {
         var xhttp = new XMLHttpRequest();
@@ -28,8 +30,7 @@ function showVisit() {
                     $("#hour").html(obj.timeOfVisit);
                     $("#doc").html(obj.doctor);
                     $("#table").slideDown("slow");
-                    document.getElementById("delete").addEventListener("click", deleteVisit);
-                    document.getElementById("change").addEventListener("click", changeVisit);
+
                 } else {
                     $("#table").slideUp("fast");
                     $("#error").slideDown("slow");
