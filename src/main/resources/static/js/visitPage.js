@@ -27,7 +27,7 @@ function showVisit() {
                     $("#date").html(obj.dateOfVisit);
                     $("#hour").html(obj.timeOfVisit);
                     $("#doc").html(obj.doctor);
-                    $("#table").slideDown(1000);
+                    $("#table").slideDown("slow");
                     document.getElementById("delete").addEventListener("click", deleteVisit);
                     document.getElementById("change").addEventListener("click", changeVisit);
                 } else {

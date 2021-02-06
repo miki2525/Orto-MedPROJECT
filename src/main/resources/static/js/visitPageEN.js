@@ -23,17 +23,17 @@ function showVisit() {
             if (this.readyState == 4 && this.status == 200) {
                 obj = JSON.parse(this.responseText);
                 if (obj.id != null) {
-                    $("#error").slideUp("fast");
+                    $("#error").slideUp("slow");
                     $("#fname").html(obj.firstName);
                     $("#lname").html(obj.lastName);
                     $("#date").html(obj.dateOfVisit);
                     $("#hour").html(obj.timeOfVisit);
                     $("#doc").html(obj.doctor);
-                    $("#table").slideDown("slow");
+                    $("#tableplace").slideDown("slow");
                     document.getElementById("delete").addEventListener("click", deleteVisit);
                     document.getElementById("change").addEventListener("click", changeVisit);
                 } else {
-                    $("#table").slideUp("fast");
+                    $("#tableplace").slideUp("fast");
                     $("#error").slideDown("slow");
                 }
             }
@@ -53,7 +53,8 @@ function deleteVisit() {
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 if (xhttp.responseText) {
-                    $("#table").slideDown("slow").html("Your visit has been canceled");
+                    $("#table").remove();
+                    $("#tableplace").slideDown("slow").html("Your visit has been canceled");
                 }
             }
         }
@@ -69,27 +70,25 @@ function changeVisit(event) {
             xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
-                    if (window.opener != null && !window.opener.closed) {
 
-                        /* DOES NOT WORKING ON HEROKU
+                    /* DOES NOT WORKING ON HEROKU
+                    if (window.opener != null && !window.opener.closed) {
                         setTimeout(function () {
                             window.opener.$("body").html(xhttp.responseText);
                             window.close();
                             $("#loading").hide();
                         }, 3000);
-                             */
-
-                        setTimeout(function () {
-                            $("body").html(xhttp.responseText);
-                            $("#loading").hide();
-                        }, 3000);
-
                     } else {
                         setTimeout(function () {
                             $("#loading").hide();
                             $("body").html(xhttp.responseText);
                         }, 3000);
                     }
+                }*/
+                    setTimeout(function () {
+                        $("#loading").hide();
+                        $("body").html(xhttp.responseText);
+                    }, 3000);
                 }
                 else {
                     $("#loading").show();
