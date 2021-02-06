@@ -1,7 +1,8 @@
 $(function(){
     
    $("#eye").on("click", function(){
-     
+        var op = window.opener;
+        console.log(op);
        if(($("#pass").attr("type")) == "password"){
            $("#pass").attr("type", "text");
        }
