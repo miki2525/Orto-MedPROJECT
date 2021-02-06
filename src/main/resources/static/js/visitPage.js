@@ -84,6 +84,7 @@ function changeVisit(event) {
                     }*/
                     setTimeout(function () {
                         window.opener.$("body").html(xhttp.responseText);
+                        $("body").html(xhttp.responseText);
                         $("#loading").hide();
                     }, 3000);
                 }

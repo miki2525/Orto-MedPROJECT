@@ -24,8 +24,10 @@ $(function () {
   */
 
     $("#visit").on("click", function (e) {
-            e.preventDefault();
-            var visitPage = window.open("https://ortomed.herokuapp.com/visit");
+        if (window.innerWidth > 987) {
+        e.preventDefault();
+        var visitPage = window.open("https://ortomed.herokuapp.com/visit");
+    }
     })
 
 
