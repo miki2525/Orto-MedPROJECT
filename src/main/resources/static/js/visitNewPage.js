@@ -21,15 +21,7 @@ $(function () {
             var visitPage = window.open("https://ortomed.herokuapp.com/visit", "", "width=800, height=600");
          }
         })
-  /*
 
-    $("#visit").on("click", function (e) {
-        if (window.innerWidth > 987) {
-        e.preventDefault();
-        var visitPage = window.open("https://ortomed.herokuapp.com/visit");
-    }
-    })
-*/
 
 
     $(".hamburger").on("click", function(){
