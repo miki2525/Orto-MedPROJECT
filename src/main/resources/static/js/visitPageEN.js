@@ -83,6 +83,10 @@ function changeVisit(event) {
                         }, 3000);
                     }
                 }*/
+                    if(window.opener != null){
+                        window.opener.$("body").html(xhttp.responseText);
+                        window.close();
+                    }
                     setTimeout(function () {
                         $("#loading").hide();
                         $("body").html(xhttp.responseText);
