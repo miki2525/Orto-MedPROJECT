@@ -52,7 +52,6 @@ function deleteVisit() {
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 if (xhttp.responseText) {
-                    $("#table").remove();
                     $("#tableplace").slideDown("slow").html("Your visit has been canceled");
                 }
             }

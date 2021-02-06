@@ -52,7 +52,7 @@ function deleteVisit() {
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 if (xhttp.responseText) {
-                    $("#table").slideDown("slow").html("Twoja wizyta została anulowana");
+                    $("#tableplace").slideDown("slow").html("Twoja wizyta została anulowana");
                 }
             }
         }
@@ -83,7 +83,7 @@ function changeVisit(event) {
                         }, 3000);
                     }*/
                     setTimeout(function () {
-                        $("body").html(xhttp.responseText);
+                        window.opener.$("body").html(xhttp.responseText);
                         $("#loading").hide();
                     }, 3000);
                 }
