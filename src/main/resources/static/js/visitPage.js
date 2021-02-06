@@ -66,7 +66,7 @@ function changeVisit(event) {
             xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
-                    if (window.opener != null) {
+                    if (window.opener > 900) {
                         setTimeout(function () {
                             window.opener.parent.$("body").html(xhttp.responseText);
                             window.parent.close();
