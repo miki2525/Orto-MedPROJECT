@@ -13,6 +13,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -39,6 +40,7 @@ class PatientControllerTest {
     @Autowired
     ObjectMapper objectMapper;
 
+
     @Autowired
     PatientService patientService;
 
@@ -59,7 +61,7 @@ class PatientControllerTest {
         mockMvc.perform(get("/about"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(view().name("about"));
+                .andExpect(view().name("aboutPage"));
     }
 
     @Test
@@ -67,7 +69,7 @@ class PatientControllerTest {
         mockMvc.perform(get("/about"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(view().name("contactPage"));
+                .andExpect(view().name("aboutPage"));
     }
 
     @Test
