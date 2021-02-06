@@ -67,11 +67,20 @@ function changeVisit(event) {
             xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
-                    setTimeout(function (){
-                        window.opener.parent.$("body").html(xhttp.responseText);
-                        window.parent.close();
-                        $("#loading").hide();}, 3000);
-                } else {
+                    if (window.opener != null) {
+                        setTimeout(function () {
+                            window.opener.parent.$("body").html(xhttp.responseText);
+                            window.parent.close();
+                            $("#loading").hide();
+                        }, 3000);
+                    } else {
+                        setTimeout(function () {
+                            $("#loading").hide();
+                            $("body").html(xhttp.responseText);
+                        }, 3000);
+                    }
+                }
+                else {
                     $("#loading").show();
                     $("#loading").animate({height: '300px', opacity: '0.4'}, "slow");
                 }
