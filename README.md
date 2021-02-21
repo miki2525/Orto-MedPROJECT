@@ -7,7 +7,7 @@ Link: https://ortomed.herokuapp.com
 
 ============================================================================================
 
-Technology:<br/)
-Front-end: HTML + CSS + JavaScript(+jQuery)<br/)
+Technology:<br/>
+Front-end: HTML + CSS + JavaScript(+jQuery)<br/>
 Back-end: Java + Spring + Hibernate + H2 + Maven + Thymeleaf + JUnit(Mockito)
 
